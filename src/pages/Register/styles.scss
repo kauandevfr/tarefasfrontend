@@ -1,0 +1,35 @@
+.benefit {
+    display: flex;
+    gap: 2rem;
+}
+
+.benefit-text {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.benefit-text strong {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.benefit-text span {
+    font-size: 1.2rem;
+    color: var(--gray-300);
+}
+
+.benefit-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 8px;
+    background: rgba(var(--yellow-800), .2);
+    border: 1px solid rgba(var(--yellow-800), .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(var(--yellow-800));
+}

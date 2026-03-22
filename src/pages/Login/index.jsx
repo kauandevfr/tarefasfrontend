@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import "./styles.scss"
 import Title from "../../components/Title"
 
 export default function Login() {
@@ -26,7 +25,7 @@ export default function Login() {
                         <div className="field-group">
                             <div className="horizontal between">
                                 <label className="label" htmlFor="password">Senha</label>
-                                <Link className="link" to='/forgot-pass'>Esqueceu a senha?</Link>
+                                <Link className="link" to='forgot-pass'>Esqueceu a senha?</Link>
                             </div>
                             <input className="input"
                                 type="password"
