@@ -1,0 +1,38 @@
+:root {
+
+    --white: #ffffff;
+    --white-100: #f7f7f7;
+
+    --gray-200: #c4c4c4;
+    --gray-300: #999999;
+    --gray-600: #3d3d3d;
+    --gray-700: #222222;
+    --gray-800: #171717;
+    --gray-850: #181818;
+    --gray-900: rgb(17, 17, 17);
+
+    --yellow-800: 255, 169, 56;
+    --yellow-1000: 253, 167, 7;
+    --yellow-1200: 201, 140, 26;
+
+    --red-1000: 255, 41, 41;
+    --red-1200: 216, 23, 23;
+
+    --green-900: 85, 227, 85;
+    --green-1000: 0, 207, 0;
+    --green-1200: 25, 153, 25;
+
+    --b-radius: 0.5rem;
+    --shadow-sm: 2px 2px 14px 2px rgba(0, 0, 0, 0.1);
+    --content-width: 60vw;
+
+    // ── Tokens semânticos — modo escuro (padrão) ──────────────
+    // Redefina estes em html[data-theme="light"] para trocar o tema
+    // sem precisar sobrescrever cada classe individualmente.
+    --color-bg: var(--gray-900);
+    --color-surface: var(--gray-800);
+    --color-border: var(--gray-700);
+    --color-text: var(--white);
+    --color-text-muted: var(--gray-300);
+    --color-text-primary: rgba(var(--yellow-800));
+}
