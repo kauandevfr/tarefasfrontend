@@ -1,0 +1,42 @@
+main {
+    min-height: calc(100vh - 36px);
+}
+
+.title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--gray-200);
+    font-weight: 400;
+}
+
+.span {
+    color: var(--gray-200);
+    font-size: 1.4rem;
+}
+
+.link {
+    color: rgba(var(--yellow-800));
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.blur {
+    width: 30rem;
+    height: 30rem;
+
+    background-color: rgba(var(--yellow-800));
+    filter: blur(14rem);
+    border-radius: 50%;
+
+    position: absolute;
+    z-index: -1;
+
+}

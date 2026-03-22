@@ -1,0 +1,21 @@
+.form-header {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.label {
+    font-size: 1.4rem;
+    color: var(--gray-200);
+    font-weight: 400;
+
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 1px;
+}

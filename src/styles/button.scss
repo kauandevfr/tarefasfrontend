@@ -1,0 +1,15 @@
+.button {
+    all: unset;
+    padding: 1rem;
+    background: rgba(var(--yellow-800));
+    color: var(--gray-900);
+    border-radius: var(--b-radius);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all .2s;
+    text-align: center;
+
+    box-sizing: border-box;
+}
