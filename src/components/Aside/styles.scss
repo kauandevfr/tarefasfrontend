@@ -1,0 +1,47 @@
+.main-aside {
+    height: calc(100vh - 32px - 98px);
+    border-right: 1px solid var(--gray-600);
+
+    width: 26rem;
+    background-color: var(--gray-800);
+
+    .button {
+        background: transparent;
+        color: var(--gray-300);
+        font-weight: 400;
+    }
+
+    .button:hover {
+        background: var(--gray-700);
+        color: var(--white);
+    }
+}
+
+.sidebar-label {
+    font-size: 1.6rem;
+    color: var(--gray-300);
+    margin-top: 2rem;
+}
+
+.sidebar-dot {
+    border-radius: 50%;
+    width: 1.6rem;
+    height: 1.6rem;
+
+    &.high {
+        background: rgba(var(--red-1200));
+    }
+
+    &.medium {
+        background: rgba(var(--yellow-1200));
+    }
+
+    &.low {
+        background: rgba(var(--green-1200));
+    }
+}
+
+.sidebar-toggle {
+    width: fit-content !important;
+    margin-left: auto !important;
+}

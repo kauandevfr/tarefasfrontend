@@ -1,14 +1,9 @@
-main {
-    min-height: calc(100vh - 36px);
-}
-
 .title {
     font-family: 'DM Serif Display', serif;
-    font-size: 2.8rem;
+    font-size: 3.4rem;
     line-height: 1.1;
-    margin-bottom: 6px;
-    font-weight: 600;
     font-style: italic;
+    font-weight: 700;
 }
 
 .subtitle,
@@ -95,4 +90,12 @@ main {
     justify-content: space-evenly;
 
     gap: 1.6rem;
+}
+
+.surface {
+    background-color: var(--gray-800);
+    border: 1px solid var(--gray-600);
+    width: var(--content-width);
+    border-radius: var(--b-radius);
+    padding: 2.6rem;
 }

@@ -1,0 +1,27 @@
+.main-header {
+    border-bottom: 1px solid var(--gray-600);
+    height: 90px;
+
+    .avatar {
+        background-color: rgba(var(--yellow-800));
+        border-radius: 50%;
+        padding: 1rem;
+        width: 6rem;
+        height: 6rem;
+        overflow: hidden;
+    }
+
+    .button {
+        all: unset;
+        cursor: pointer;
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
+
+.main-header-menu {
+    width: 90vw;
+}

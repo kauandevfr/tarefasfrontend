@@ -12,4 +12,19 @@
     text-align: center;
 
     box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.button.secondary {
+    background: transparent;
+    color: var(--gray-300);
+    border: 1px solid var(--gray-300);
+}
+
+.button.hover-yellow:hover {
+    border-color: rgba(var(--yellow-800));
+    color: rgba(var(--yellow-800));
 }
