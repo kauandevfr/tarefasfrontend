@@ -11,15 +11,11 @@ main {
     font-style: italic;
 }
 
-.subtitle {
+.subtitle,
+.span {
     font-size: 1.4rem;
     color: var(--gray-200);
     font-weight: 400;
-}
-
-.span {
-    color: var(--gray-200);
-    font-size: 1.4rem;
 }
 
 .link {
