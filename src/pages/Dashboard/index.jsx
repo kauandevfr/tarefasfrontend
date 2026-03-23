@@ -3,6 +3,7 @@ import Title from "../../components/Title"
 import Header from "../../components/Header"
 import Aside from "../../components/Aside"
 import TaskRow from "../../components/TaskRow/TaskRow"
+import Calendar from "../../components/Calendar"
 export default function Dashboard() {
     return (
         <main>
@@ -10,8 +11,8 @@ export default function Dashboard() {
             <div className="dashboard-content horizontal">
                 <Aside />
 
-                <section className="tasks-content p2 vertical ai-center g4">
-                    <div className="horizontal content-width between">
+                <section className="tasks-content p4 vertical ai-center g4">
+                    {/* <div className="horizontal content-width between">
                         <div className="vertical g1">
                             <h1 className="title">Minhas Tarefas</h1>
                             <p className="subtitle">17 de março de 2026</p>
@@ -50,8 +51,11 @@ export default function Dashboard() {
                     <div className="vertical g2">
                         <TaskRow />
                         <TaskRow />
-                    </div>
+                    </div> */}
+                    <Calendar />
+
                 </section>
+
             </div>
         </main>
     )
