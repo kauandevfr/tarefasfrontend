@@ -14,7 +14,7 @@ export default function User() {
                 <h1 className="title">Meu Perfil</h1>
                 <p className="subtitle">gerencie suas informações e preferências</p>
             </div>
-            <section className="surface fade-anim">
+            <section className="surface fade-anim vertical">
                 <h1 className="section-title">Foto e Identificação</h1>
                 <div className="avatar-section horizontal g4">
                     <div className="avatar-img center">
@@ -36,7 +36,7 @@ export default function User() {
                     </div>
                 </div>
             </section>
-            <div className="surface fade-anim">
+            <div className="surface fade-anim vertical">
                 <h1 className="section-title">Estatísticas</h1>
                 <div className="horizontal g4">
                     <div className="stat-card">
@@ -53,7 +53,7 @@ export default function User() {
                     </div>
                 </div>
             </div>
-            <section className="surface fade-anim">
+            <section className="surface fade-anim vertical">
                 <h1 className="section-title">Dados Pessoais</h1>
                 <div className="field-group">
                     <label className="label" htmlFor="name">Nome completo</label>
@@ -98,7 +98,7 @@ export default function User() {
                     </button>
                 </div>
             </section>
-            <section className="surface fade-anim">
+            <section className="surface fade-anim vertical">
                 <div className="section-title">Segurança</div>
                 <div className="field-group">
                     <label className="label" htmlFor="currentPassword">Senha atual</label>
@@ -135,7 +135,7 @@ export default function User() {
                     </button>
                 </div>
             </section>
-            <section className="surface fade-anim">
+            <section className="surface fade-anim vertical">
                 <div className="section-title">Preferências</div>
                 <div className="preference-row">
                     <div className="preference-label">
@@ -159,7 +159,7 @@ export default function User() {
                     <Toggle />
                 </div>
             </section>
-            <section className="surface danger fade-anim">
+            <section className="surface danger fade-anim vertical">
                 <div className="section-title">Zona de Perigo</div>
                 <div className="preference-row">
                     <div>

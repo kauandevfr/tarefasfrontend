@@ -1,0 +1,48 @@
+.task-check {
+    width: 2rem;
+    height: 2rem;
+
+    background-color: rgba(var(--yellow-800));
+    border-radius: var(--b-radius);
+}
+
+.task-actions {
+    opacity: 0;
+    transition: ease-in-out .2s;
+    pointer-events: none;
+}
+
+.task-meta {
+    padding: 1rem;
+    border: 1px solid;
+    width: fit-content;
+    border-radius: var(--b-radius);
+    font-size: 1.4rem;
+
+    $priorities: (
+        'high': --red-1000,
+        'medium': --yellow-1000,
+        'low': --green-1000,
+    );
+
+@each $name, $color in $priorities {
+    &.#{$name} {
+        background-color: rgba(var(#{$color}), .2);
+        border-color: rgba(var(#{$color}));
+        color: rgba(var(#{$color}));
+    }
+}
+}
+
+.task-row.completed {
+    opacity: .3;
+
+    .task-title {
+        text-decoration: line-through;
+    }
+}
+
+.task-row:hover .task-actions {
+    opacity: 1;
+    pointer-events: all;
+}

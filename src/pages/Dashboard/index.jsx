@@ -2,6 +2,7 @@ import "./styles.scss"
 import Title from "../../components/Title"
 import Header from "../../components/Header"
 import Aside from "../../components/Aside"
+import TaskRow from "../../components/TaskRow/TaskRow"
 export default function Dashboard() {
     return (
         <main>
@@ -46,6 +47,10 @@ export default function Dashboard() {
                         </div>
                     </div>
 
+                    <div className="vertical g2">
+                        <TaskRow />
+                        <TaskRow />
+                    </div>
                 </section>
             </div>
         </main>
