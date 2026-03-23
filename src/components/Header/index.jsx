@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import Title from "../Title";
 import "./styles.scss"
 
 export default function Header() {
     return (
-        <header className="main-header center">
+        <header className="main-header center w100">
             <nav className="main-header-menu horizontal between ai-center">
                 <Title />
                 <div className="horizontal g2">
@@ -28,9 +29,9 @@ export default function Header() {
                             />
                         </svg>
                     </button>
-                    <div className="avatar center pointer">
+                    <Link className="avatar center pointer" to='/user-settings'>
                         <span className="text-gray-900 text-2xl font-title text-w-800">KR</span>
-                    </div>
+                    </Link>
                 </div>
             </nav>
         </header>

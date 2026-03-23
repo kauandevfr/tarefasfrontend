@@ -164,7 +164,8 @@
     cursor: pointer;
 }
 
-.wrapper {
+.wrapper,
+.fade-anim {
     animation: fadeUp .5s ease both;
 }
 
