@@ -7,10 +7,15 @@
     font-size: 1.4rem;
     outline: none;
 
+    transition: all .3s;
     border: none;
 }
 
 .input:focus {
     outline: 1px solid var(--gray-600);
 
+}
+
+.input.error {
+    border: 2px solid rgba(var(--red-1000), .3);
 }
