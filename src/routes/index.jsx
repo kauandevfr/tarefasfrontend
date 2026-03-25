@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import User from "../pages/User";
 import ForgotPassword from "../pages/ForgotPassword";
 import NotFound from "../pages/NotFound";
+import Home from "../pages/Home";
 
 export default function MainRoutes() {
     return (
@@ -16,6 +17,7 @@ export default function MainRoutes() {
             <Route path="/user-settings" element={<User />} />
             <Route path="/forgot-pass" element={<ForgotPassword />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path="/" element={<Home />} />
 
         </Routes>
     )

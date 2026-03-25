@@ -27,6 +27,7 @@ html {
 
 body,
 .page {
+
     max-width: 100vw;
     min-height: calc(100vh - 32px);
     font-family: "DM Mono", monospace;
@@ -43,4 +44,14 @@ body,
 *::-webkit-scrollbar-thumb {
     border-radius: var(--b-radius);
     background-color: var(--white);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('../../public/noise.svg');
+    opacity: .035;
+    pointer-events: none;
+    z-index: 0;
 }

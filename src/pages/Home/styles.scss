@@ -1,0 +1,492 @@
+// ─── Nav ───────────────────────────────────────────────
+.landing-nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid var(--gray-600);
+    padding: 2rem 6rem;
+    backdrop-filter: blur(1rem);
+    z-index: 2;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+// ─── Hero ──────────────────────────────────────────────
+.hero {
+    min-height: 100vh;
+}
+
+.hero-title {
+    font-size: 10rem !important;
+}
+
+.hero-inner {
+    gap: 6rem;
+    position: relative;
+
+    .subtitle {
+        animation-delay: .3s !important;
+    }
+}
+
+.hero-actions {
+    animation-delay: .4s !important;
+}
+
+.hero-badge {
+    border: 1px solid var(--gray-600);
+    border-radius: 4rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    color: var(--gray-300);
+}
+
+.hero-badge-dot {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background-color: rgba(var(--yellow-800));
+}
+
+// ─── Glow pseudo-elements (hero + cta) ────────────────
+.hero-inner::after,
+.cta-section::before {
+    content: '';
+    position: absolute;
+    width: 40rem;
+    height: 40rem;
+    background-color: rgba(var(--yellow-800));
+    filter: blur(10rem);
+    opacity: .2;
+    border-radius: 50%;
+    top: 3rem;
+    z-index: -1;
+}
+
+// ─── Section padding (shared) ─────────────────────────
+.how,
+.priority-section,
+.whatsapp,
+.cta-section,
+.features {
+    padding: 14rem 0;
+    scroll-margin-top: 20rem;
+}
+
+.cta-section {
+    position: relative;
+
+    .button {
+        font-size: 2.6rem;
+        padding: 2rem 4rem;
+        letter-spacing: 1px;
+    }
+}
+
+// ─── App Preview ──────────────────────────────────────
+.preview-wrap {
+    width: 28vw;
+    height: 40rem;
+    border-radius: var(--b-radius);
+    border: 1px solid var(--gray-600);
+    position: relative;
+    animation-delay: .6s !important;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 6rem;
+        background-color: rgba(var(--yellow-800));
+        bottom: -3rem;
+        border-radius: 60%;
+        filter: blur(1rem);
+        opacity: .1;
+        z-index: -1;
+    }
+}
+
+.app-preview {
+    height: 100%;
+    overflow: hidden;
+}
+
+.preview-bar {
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--gray-800);
+    border-bottom: 1px solid var(--gray-600);
+
+    .dot {
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: var(--b-radius);
+
+        &.low {
+            background-color: rgba(var(--green-1000));
+        }
+
+        &.medium {
+            background-color: rgba(var(--yellow-1000));
+        }
+
+        &.high {
+            background-color: rgba(var(--red-1000));
+        }
+    }
+}
+
+.preview-url {
+    font-size: 1.4rem;
+    color: var(--gray-600);
+    background-color: var(--gray-900);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.preview-sidebar {
+    padding: 2rem;
+    background-color: var(--gray-800);
+    border-right: 1px solid var(--gray-600);
+}
+
+.preview-main {
+    flex: 1;
+    padding: 2rem;
+}
+
+// ─── Preview Manager (pm-*) ───────────────────────────
+.pm-header {
+    margin-bottom: 1.2rem;
+
+    .button {
+        font-size: 1.2rem;
+        padding: .5rem;
+        cursor: unset;
+    }
+}
+
+.pm-progress {
+    margin-bottom: 1.2rem;
+}
+
+.pm-stat {
+    font-family: "DM Serif Display", serif;
+    color: rgba(var(--yellow-800));
+    font-size: 2.4rem;
+}
+
+.pm-bar-wrap {
+    height: .8rem;
+    flex: 1;
+    border-radius: var(--b-radius);
+    background-color: var(--gray-600);
+}
+
+.pm-bar-fill {
+    height: 100%;
+    width: 50%;
+    background-color: rgba(var(--yellow-800));
+    border-radius: var(--b-radius);
+}
+
+.pm-task-text {
+    font-size: 1.3rem;
+}
+
+.pm-check {
+    width: 1rem;
+    height: 1rem;
+    background-color: rgba(var(--yellow-800));
+    border-radius: var(--b-radius);
+}
+
+.preview-row {
+    border: 1px solid var(--gray-600);
+    background-color: var(--gray-800);
+    padding: 1rem;
+    border-radius: var(--b-radius);
+
+    .task-meta {
+        padding: .6rem;
+        font-size: 1rem;
+    }
+}
+
+// ─── Preview Sidebar items (ps-*) ─────────────────────
+.ps-label,
+.ps-item {
+    color: var(--gray-300);
+    padding: .3rem;
+    border-radius: var(--b-radius);
+    font-size: 1.2rem;
+}
+
+.ps-label {
+    text-align: center;
+}
+
+.ps-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &.active {
+        color: var(--white);
+        background-color: var(--gray-700);
+    }
+}
+
+.ps-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+
+    &.low {
+        background-color: rgba(var(--green-1000));
+    }
+
+    &.medium {
+        background-color: rgba(var(--yellow-1000));
+    }
+
+    &.high {
+        background-color: rgba(var(--red-1000));
+    }
+}
+
+// ─── Features ─────────────────────────────────────────
+.features {
+    gap: 8rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.feature-card {
+    background: var(--gray-850);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--b-radius);
+    padding: 3.6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(var(--yellow-800)), transparent);
+        opacity: 0;
+        transition: opacity .3s;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+.feature-icon {
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 10px;
+    background: var(--gray-700);
+    border: 1px solid rgba(var(--yellow-800), .2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    color: rgba(var(--yellow-800));
+    position: relative;
+}
+
+.feature-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.feature-desc {
+    font-size: 1.5rem;
+    color: var(--gray-300);
+}
+
+.section-eyebrow {
+    letter-spacing: 1px;
+}
+
+// ─── Steps ────────────────────────────────────────────
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 48px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 28px;
+        left: calc(16% + 28px);
+        right: calc(16% + 28px);
+        height: 2px;
+        background: linear-gradient(90deg, var(--gray-300), transparent 50%, var(--gray-300));
+        opacity: .3;
+    }
+}
+
+.step {
+    text-align: center;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.step-num {
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 50%;
+    background: var(--gray-850);
+    border: 1px solid var(--gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.2rem;
+    color: rgba(var(--yellow-800));
+    position: relative;
+    z-index: 1;
+}
+
+.step-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+}
+
+.step-desc {
+    color: var(--gray-300);
+    font-size: 1.4rem;
+    line-height: 1.7;
+}
+
+// ─── Priority Section ─────────────────────────────────
+.priority-visual {
+    width: 100%;
+
+    .pm-task {
+        width: 100%;
+        transition: .6s all;
+
+        &:hover {
+            transform: translateX(1rem);
+        }
+    }
+}
+
+.priority-texts {
+    width: 100%;
+}
+
+// ─── WhatsApp Section ─────────────────────────────────
+.whatsapp-section {
+    background: var(--gray-800);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--b-radius);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem;
+    min-height: 44vh;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(var(--whatsapp), .1) 0%, transparent 70%);
+    }
+}
+
+.whatsapp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(var(--whatsapp), .1);
+    border: 1px solid rgba(var(--whatsapp));
+    border-radius: 99px;
+    padding: 5px 12px;
+    font-size: 1.6rem;
+    color: rgba(var(--whatsapp));
+}
+
+.wa-msg {
+    font-size: 1.4rem;
+    border-radius: var(--b-radius);
+    width: fit-content;
+    padding: 1rem;
+    max-width: 50%;
+
+    strong {
+        font-weight: 500;
+    }
+
+    &.bot {
+        background: var(--gray-700);
+        border: 1px solid var(--gray-600);
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+    }
+
+    &.user {
+        background: rgba(var(--whatsapp), .1);
+        border: 1px solid rgba(var(--whatsapp), .3);
+        border-bottom-right-radius: 2px;
+        color: rgba(var(--whatsapp));
+        margin-left: auto;
+    }
+}
+
+.wa-time {
+    color: var(--gray-300);
+    font-size: 1.2rem;
+}
+// ─── Scroll Reveal ────────────────────────────────────
+.reveal-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
