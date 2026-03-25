@@ -1,13 +1,36 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Title from "../../components/Title"
 import "./styles.scss"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import instance from "../../services/instance";
+import ErrorMessage from "../../components/ErrorMessage";
+import { registerSchema } from "../../schemas/user/add";
 
 export default function Register() {
+    const navigate = useNavigate()
+    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm({ resolver: yupResolver(registerSchema) });
+    const [error, setError] = useState(null)
+
+    const handleRegister = async data => {
+        try {
+            setError(null)
+
+            const { confirmPassword, ...rest } = data
+            await instance.post('/user/register', rest);
+
+            navigate('/login');
+        } catch (error) {
+            setError(error.response.data.message)
+        }
+    }
+
     return (
         <main className="center">
             <div className="blur" />
             <div className="wrapper">
-                <form className="panel-right vertical p4 between">
+                <div className="panel-right vertical p4 between">
                     <div className="brand">
                         <Title />
                         <h2 className="subtitle">Seu gerenciador pessoal.</h2>
@@ -64,9 +87,9 @@ export default function Register() {
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
 
-                <div className="panel-left p4">
+                <form className="panel-left p4" onSubmit={handleSubmit(handleRegister)}>
                     <div className="form-header">
                         <h1 className="title">Crie sua<br />conta.</h1>
                         <h2 className="subtitle">Grátis, sem cartão de crédito.</h2>
@@ -77,37 +100,50 @@ export default function Register() {
                             <label className="label" htmlFor="name">Nome</label>
                             <input className="input"
                                 type="text"
-                                riquired
-                                autoFocus
                                 id="name"
                                 placeholder="Seu nome"
+                                {...register('name')}
                             />
+                            <ErrorMessage message={errors.name?.message} />
                         </div>
 
                         <div className="field-group">
                             <label className="label" htmlFor="email">E-mail</label>
                             <input className="input"
                                 type="text"
-                                riquired
-                                autoFocus
                                 id="email"
-                                placeholder="seu@email.com"
+                                {...register('email')}
                             />
+                            <ErrorMessage message={errors.email?.message} />
                         </div>
                         <div className="field-group">
                             <label className="label" htmlFor="password">Senha</label>
                             <input className="input"
                                 type="password"
                                 riquired
-                                autoFocus
                                 id="password"
                                 placeholder="••••••••"
+                                {...register('password')}
                             />
+                            <ErrorMessage message={errors.password?.message} />
+                        </div>
+                        <div className="field-group">
+                            <label className="label" htmlFor="confirmPassword">Senha</label>
+                            <input className="input"
+                                type="password"
+                                riquired
+                                id="confirmPassword"
+                                placeholder="••••••••"
+                                {...register('confirmPassword')}
+                            />
+                            <ErrorMessage message={errors.confirmPassword?.message} />
                         </div>
                     </div>
                     <div className="vertical g2 ai-center">
+                        <ErrorMessage message={error} />
                         <button className="button w100 jc-center"
                             type="submit"
+                            disabled={isSubmitting}
                         >
                             Criar conta
                         </button>
@@ -118,7 +154,7 @@ export default function Register() {
                             </Link>
                         </span>
                     </div>
-                </div>
+                </form>
 
             </div>
         </main >
