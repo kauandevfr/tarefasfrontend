@@ -42,11 +42,19 @@ main {
     display: flex;
     overflow: hidden;
 
+    height: 52vh;
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     min-height: 620px;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--gray-600);
+
+    .footer {
+        .font-title {
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+    }
 }
 
 .panel-right {
@@ -63,8 +71,9 @@ main {
         border-radius: 50%;
 
         position: absolute;
-        border: 1px solid var(--gray-600);
-        background-color: rgba(var(--yellow-800), .05);
+        background-color: rgba(var(--yellow-800));
+        filter: blur(3rem);
+        opacity: .12;
     }
 
     &::before {
@@ -85,7 +94,7 @@ main {
 }
 
 .panel-left {
-    width: 400px;
+    width: 550px;
     background-color: var(--gray-800);
     border: 1px solid var(--gray-600);
 

@@ -8,7 +8,7 @@ export default function Login() {
             <div className="wrapper">
                 <div className="panel-left p4">
                     <div className="form-header">
-                        <h1 className="title">Bem vindo<br />de volta.</h1>
+                        <h1 className="title">Bem vindo<br /><span className="text-yellow-800">de volta.</span></h1>
                         <h2 className="subtitle">Entre com suas credenciais para continuar.</h2>
                     </div>
                     <div className="vertical w100 g2">
@@ -36,8 +36,8 @@ export default function Login() {
                             />
                         </div>
                     </div>
-                    <div className="vertical g2">
-                        <button className="button w100"
+                    <div className="vertical g2 ai-center">
+                        <button className="button w100 jc-center"
                             type="submit"
                         >
                             Iniciar sessão
@@ -57,13 +57,13 @@ export default function Login() {
                     </div>
 
                     <div className="footer">
-                        <p className="title">
+                        <h3 className="text-3xl font-title">
                             "Organize o que<br />
                             <span className="text-yellow-800">
                                 realmente importa.
                             </span>
                             "
-                        </p>
+                        </h3>
                     </div>
                 </form>
             </div>

@@ -105,8 +105,8 @@ export default function Register() {
                             />
                         </div>
                     </div>
-                    <div className="vertical g2">
-                        <button className="button w100"
+                    <div className="vertical g2 ai-center">
+                        <button className="button w100 jc-center"
                             type="submit"
                         >
                             Criar conta
