@@ -1,10 +1,14 @@
-import "./styles.scss"
-import Title from "../../components/Title"
-import Header from "../../components/Header"
 import Aside from "../../components/Aside"
+import Header from "../../components/Header"
 import TaskRow from "../../components/TaskRow/TaskRow"
-import Calendar from "../../components/Calendar"
+import "./styles.scss"
+// import Calendar from "../../components/Calendar"
+
+
 export default function Dashboard() {
+
+
+
     return (
         <main>
             <Header />
@@ -24,7 +28,7 @@ export default function Dashboard() {
                     </div>
 
                     <div className="date-nav surface">
-                        <button className="button secondary hover-yellow" onclick="shiftDay(-1)">
+                        <button className="button secondary hover-yellow">
                             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
                         </button>
                         <h1 className="title">Hoje</h1>
@@ -33,16 +37,16 @@ export default function Dashboard() {
                         </button>
                     </div>
 
-                    <div class="surface horizontal g2">
+                    <div className="surface horizontal g2">
 
-                        <div class="vertical g1 jc-center w100">
-                            <div class="subtitle">Progresso do dia</div>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar-fill"></div>
+                        <div className="vertical g1 jc-center w100">
+                            <div className="subtitle">Progresso do dia</div>
+                            <div className="progress-bar-wrap">
+                                <div className="progress-bar-fill"></div>
                             </div>
                         </div>
 
-                        <div class="vertical ai-center">
+                        <div className="vertical ai-center">
                             <strong className="text-yellow-800 font-title text-4xl">0/1</strong>
                             <span className="subtitle">concluídas</span>
                         </div>
@@ -52,7 +56,8 @@ export default function Dashboard() {
                         <TaskRow />
                         <TaskRow />
                     </div>
-                    <Calendar />
+
+                    {/* <Calendar /> */}
 
                 </section>
 

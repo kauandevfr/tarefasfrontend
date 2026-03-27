@@ -32,18 +32,18 @@ export default function ForgotPassword() {
                         <p className="span">Enviaremos um link seguro para você redefinir sua senha rapidinho.</p>
                     </div>
 
-                    <div class="steps vertical g1">
-                        <div class="step">
-                            <h3 class="step-num">1</h3>
-                            <p class="span">Informe seu e-mail cadastrado</p>
+                    <div className="steps vertical g1">
+                        <div className="step">
+                            <h3 className="step-num">1</h3>
+                            <p className="span">Informe seu e-mail cadastrado</p>
                         </div>
-                        <div class="step">
-                            <h3 class="step-num">2</h3>
-                            <p class="span">Verifique sua caixa de entrada</p>
+                        <div className="step">
+                            <h3 className="step-num">2</h3>
+                            <p className="span">Verifique sua caixa de entrada</p>
                         </div>
-                        <div class="step">
-                            <h3 class="step-num">3</h3>
-                            <p class="span">Clique no link e crie uma nova senha</p>
+                        <div className="step">
+                            <h3 className="step-num">3</h3>
+                            <p className="span">Clique no link e crie uma nova senha</p>
                         </div>
                     </div>
 

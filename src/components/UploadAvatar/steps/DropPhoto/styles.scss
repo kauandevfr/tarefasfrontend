@@ -1,0 +1,35 @@
+.drop-zone {
+    width: 100%;
+    // height: 16rem;
+    background-color: var(--gray-700);
+
+    border-radius: var(--b-radius);
+    border: 2px solid var(--gray-600);
+    position: relative;
+    transition: all .3s ease-in-out;
+    padding: 2rem;
+
+
+    input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    &:hover {
+        border-color: rgba(var(--yellow-800));
+        background-color: rgba(var(--yellow-800), .05);
+    }
+}
+
+.drop-zone-icon {
+    width: 6rem;
+    padding: 1rem;
+    border-radius: var(--b-radius);
+    background-color: var(--gray-600);
+}
+
+.container-drop-photo {
+    // padding: 0 2rem;
+}

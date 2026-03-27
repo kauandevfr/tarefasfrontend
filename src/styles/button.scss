@@ -16,6 +16,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    svg {
+        width: 1.6rem;
+    }
 }
 
 .button.secondary {
@@ -41,4 +45,8 @@
 .button:disabled {
     opacity: .4;
     cursor: not-allowed;
+}
+
+.button.success {
+    background-color: rgba(var(--green-1200));
 }

@@ -1,4 +1,5 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
+import instance from "../services/instance";
 
 export const TaskContext = createContext({});
 
@@ -8,9 +9,30 @@ export const useTask = () => {
 
 export function TasksProvider({ children }) {
 
+    const [tasks, setTasks] = useState({
+        loading: true,
+        items: []
+    });
+
+    const listTasks = async () => {
+        const searchParams = new URLSearchParams(location.search)
+
+        try {
+            const { data } = await instance.get(`/tasks?date=${searchParams.get("date")}`);
+            setTasks({
+                loading: false,
+                items: data,
+            });
+
+            console.log(data)
+        } catch (error) {
+            showError(error);
+        }
+    };
+
     return (
         <TaskContext.Provider
-            value={{}}
+            value={{ listTasks, tasks }}
         >
             {children}
         </TaskContext.Provider>

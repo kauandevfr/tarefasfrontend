@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import Title from "../Title";
 import "./styles.scss"
+import { useEffect } from "react";
+import { useUser } from "../../providers/userContext";
 
 export default function Header() {
+
+    const { listUser, user } = useUser()
+
+    useEffect(() => {
+        listUser()
+    }, [])
+
     return (
         <header className="main-header center w100">
             <nav className="main-header-menu horizontal between ai-center">
@@ -29,8 +38,8 @@ export default function Header() {
                             />
                         </svg>
                     </button>
-                    <Link className="avatar center pointer" to='/user-settings'>
-                        <span className="text-gray-900 text-2xl font-title text-w-800">KR</span>
+                    <Link className="user-photo center pointer" to='/user-settings'>
+                        {!user.data.avatar && <span className="text-gray-900 text-2xl font-title text-w-800">{user.data.initials}</span>}
                     </Link>
                 </div>
             </nav>
