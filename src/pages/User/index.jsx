@@ -4,13 +4,12 @@ import { useForm } from "react-hook-form"
 import ErrorMessage from "../../components/ErrorMessage"
 import Header from "../../components/Header"
 import Toggle from "../../components/Toggle"
+import UploadAvatar from "../../components/UploadAvatar"
 import { useTask } from "../../providers/taskContext"
 import { useUser } from "../../providers/userContext"
 import { updatePasswordSchema, updateUserSchema } from "../../schemas/user/update"
 import instance from "../../services/instance"
 import "./styles.scss"
-import UploadAvatar from "../../components/UploadAvatar"
-// import CountUp from "react-countup"
 
 export default function User() {
 
@@ -41,7 +40,6 @@ export default function User() {
     const handleEditUser = async (data, key) => {
         delete data.confirmPassword
 
-        // APAGAR 
         delete data.phonenumber
 
         try {
@@ -51,7 +49,7 @@ export default function User() {
             setTimeout(() => setSuccess(initialValues), 2000)
             resetPass()
         } catch (error) {
-            return console.log({ ...error });
+            return console.error({ ...error });
         }
     };
 
@@ -70,6 +68,17 @@ export default function User() {
         }
     }
 
+    const deletePhoto = async () => {
+
+        try {
+            await instance.delete("/user/avatar");
+
+            listUser()
+        } catch (err) {
+            showError(err);
+        }
+    }
+
     useEffect(() => {
         if (!user.loading && user.data) {
             reset({
@@ -79,6 +88,8 @@ export default function User() {
             })
         }
     }, [user.data])
+
+
 
     useEffect(() => {
         listTasks()
@@ -98,7 +109,9 @@ export default function User() {
             <section className="surface fade-anim vertical">
                 <h1 className="section-title">Foto e Identificação</h1>
                 <div className="user-photo-section horizontal g4">
-                    <div className="user-photo-img center">
+                    <div className="user-photo-img center photo-config"
+                        style={{ backgroundImage: `url(${user.data?.avatar})` }}
+                    >
                         {!user.data.avatar &&
                             <span className="text-4xl font-title text-yellow-800">{user.data?.initials}</span>
 
@@ -113,8 +126,8 @@ export default function User() {
                             <p className="subtitle">{user.data?.email}</p>
                         </div>
                         <div className="horizontal g1">
-                            <button className="button secondary hover-yellow" onClick={() => setPhotoSteps('select')}>Alterar foto</button>
-                            <button className="button secondary hover-red" >Remover</button>
+                            <button className="button secondary hover-yellow" type='button' onClick={() => setPhotoSteps('select')}>Alterar foto</button>
+                            <button className="button secondary hover-red" type='button' onClick={deletePhoto} >Remover</button>
                         </div>
                         <p className="subtitle" >JPG, PNG ou WebP · Máx. 5MB</p>
                     </div>

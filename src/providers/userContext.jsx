@@ -25,20 +25,38 @@ export const UserProvider = ({ children }) => {
 
             setUser({ data: { ...data, initials }, loading: false })
 
-            console.log(data)
-
             const html = document.querySelector("html");
             html.setAttribute("data-theme", data.theme);
 
         } catch (error) {
-            return console.log(error)
+            return console.error(error)
         }
     }
 
     const [photoSteps, setPhotoSteps] = useState('')
 
+    const initialPhotoInfos = {
+        fileRaw: null,
+        crop: { x: 0, y: 0 },
+        zoom: 1,
+        brightness: 100,
+        imageForCrop: null,
+        name: null,
+        croppedAreaPixels: { x: 0, y: 0, width: 260, height: 260 }, // 👈 fallback
+    }
+
+    const [photoInfos, setPhotoInfos] = useState(initialPhotoInfos);
+
     return (
-        <UserContext.Provider value={{ listUser, user, photoSteps, setPhotoSteps }}>
+        <UserContext.Provider value={{
+            listUser,
+            user,
+            photoSteps,
+            setPhotoSteps,
+            photoInfos,
+            setPhotoInfos,
+            initialPhotoInfos
+        }}>
             {children}
         </UserContext.Provider>
     );

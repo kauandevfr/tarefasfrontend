@@ -7,7 +7,7 @@
     border: 2px solid var(--gray-600);
     position: relative;
     transition: all .3s ease-in-out;
-    padding: 2rem;
+    padding: 3.2rem 2rem;
 
 
     input[type="file"] {
@@ -17,7 +17,8 @@
         cursor: pointer;
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
         border-color: rgba(var(--yellow-800));
         background-color: rgba(var(--yellow-800), .05);
     }
@@ -28,8 +29,4 @@
     padding: 1rem;
     border-radius: var(--b-radius);
     background-color: var(--gray-600);
-}
-
-.container-drop-photo {
-    // padding: 0 2rem;
 }

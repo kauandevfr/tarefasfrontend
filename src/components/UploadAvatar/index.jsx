@@ -1,19 +1,42 @@
 import { useUser } from "../../providers/userContext";
+import { useSavePhoto } from "../../services/savePhoto";
 import ModalBase from "../ModalBase";
+import CropPhoto from "./steps/CropPhoto";
 import DropPhoto from "./steps/DropPhoto";
+import ViewPhoto from "./steps/ViewPhoto";
 import './styles.scss'
 
 export default function UploadAvatar() {
 
-    const { photoSteps, setPhotoSteps } = useUser()
+    const { photoSteps, setPhotoSteps, photoInfos, setPhotoInfos, initialPhotoInfos } = useUser()
+
+    const handleSave = useSavePhoto();
 
     const STEPS = ['select', 'crop', 'preview'];
 
     const currentIndex = STEPS.indexOf(photoSteps);
 
+    const handleNext = () => {
+        const next = STEPS[currentIndex + 1];
+        if (next) setPhotoSteps(next);
+    };
+
+    const handleBack = () => {
+        const prev = STEPS[currentIndex - 1];
+        if (prev) setPhotoSteps(prev);
+    };
+
     const closeModal = () => {
         setPhotoSteps('')
+        setPhotoInfos(initialPhotoInfos)
     }
+
+    const saveAndClose = () => {
+        handleSave()
+        closeModal()
+    }
+
+
 
     return (
         <ModalBase
@@ -32,32 +55,44 @@ export default function UploadAvatar() {
 
             </div>
 
+            {photoSteps !== 'select' && <ViewPhoto />}
             {photoSteps === "select" && <DropPhoto />}
+            {photoSteps === "crop" && <CropPhoto />}
+
+            {photoSteps === 'preview' &&
+                <div className="preview-profile vertical g1 ai-center">
+                    <h1 className="form-title">Kauan Rodrigues Oliveira</h1>
+                    <h1 className="form-subtitle">kauanrdx145@gmail.com</h1>
+                    <p className="form-subtitle">
+                        Sua foto de perfil ficará assim
+                    </p>
+                </div>
+            }
 
             <div className="upload-navigation horizontal w100 g1 jc-end">
                 {photoSteps !== 'select' && (
                     <button className="button secondary hover-yellow" type="button"
-                    // onClick={handleBack}
+                        onClick={handleBack}
                     >
                         Voltar
                     </button>
                 )}
                 <div className="w100" />
                 <button className="button secondary hover-red" type="button"
-                // onClick={handleCloseModal}
+                    onClick={closeModal}
                 >
                     Cancelar
                 </button>
                 {photoSteps !== 'preview' && (
                     <button className="button" type="button"
-                    // disabled={!avatarState.imageForCrop} onClick={handleNext}
+                        disabled={!photoInfos.imageForCrop} onClick={handleNext}
                     >
                         Continuar
                     </button>
                 )}
                 {photoSteps === 'preview' && (
                     <button className="button" type="button"
-                    // onClick={handleSaveAvatar}
+                        onClick={saveAndClose}
                     >
                         Salvar
                     </button>

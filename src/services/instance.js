@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const baseURL = 'https://tarefaspai.kauantodrigues.com.br';
-const baseURL = 'http://localhost:7007';
+const baseURL = 'https://tarefasapi.kauanrodrigues.com.br';
+// const baseURL = 'http://localhost:7007';
 
 export const instance = axios.create({
     baseURL,

@@ -38,7 +38,9 @@ export default function Header() {
                             />
                         </svg>
                     </button>
-                    <Link className="user-photo center pointer" to='/user-settings'>
+                    <Link className="user-photo center pointer photo-config" to='/user-settings'
+                        style={{ backgroundImage: `url(${user.data?.avatar})` }}
+                    >
                         {!user.data.avatar && <span className="text-gray-900 text-2xl font-title text-w-800">{user.data.initials}</span>}
                     </Link>
                 </div>

@@ -1,14 +1,49 @@
+import { useRef } from 'react';
 import './styles.scss'
+import { useUser } from '../../../../providers/userContext';
 
 export default function DropPhoto() {
+    const fileRef = useRef();
+
+    const { setPhotoInfos, photoInfos } = useUser()
+
+    const MAX_SIZE_MB = 3;
+
+    const ACCEPTED_TYPES = /^image\/(png|jpe?g|webp)$/i;
+
+    const onSelectPhoto = async (e) => {
+        const f = e.target.files?.[0];
+        if (!f) return;
+
+        if (!ACCEPTED_TYPES.test(f.type)) {
+            // return setAlertModal({ open: true, tag: "error", message: "A foto de perfil deve ser PNG, JPG ou WEBP." });
+        }
+
+        if (f.size > MAX_SIZE_MB * 1024 * 1024) {
+            // return setAlertModal({ open: true, tag: "error", message: `A foto de perfil não pode ultrapassar ${MAX_SIZE_MB} MB.` });
+        }
+
+        setPhotoInfos(prev => ({
+            ...prev,
+            fileRaw: f,
+            imageForCrop: URL.createObjectURL(f),
+            crop: { x: 0, y: 0 },
+            zoom: 1,
+            name: f.name,
+        }));
+
+    };
+
+    const hasFile = Boolean(photoInfos.imageForCrop);
+
     return (
-        <div className="container-drop-photo">
-            <div className="drop-zone center g2">
+        <div className="container-drop-photo w100">
+            <div className={`drop-zone center g2 ${hasFile && 'selected'}`}>
                 <input
                     type="file"
                     accept="image/jpeg,image/png,image/webp"
-                // onChange={onSelectPhoto}
-                // ref={fileRef}
+                    onChange={onSelectPhoto}
+                    ref={fileRef}
                 />
 
                 <svg className="drop-zone-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,11 +52,16 @@ export default function DropPhoto() {
                 </svg>
 
                 <div className="vertical ai-center g1">
-                    <span className="text-sm text-white">Arraste a sua foto aqui</span>
-                    <span className="text-sm text-gray-300">JPG, PNG ou WebP · Máx. 5MB</span>
+
+                    {hasFile ? <span className="text-sm text-white">Arquivo selecionado: {photoInfos.name}</span> :
+                        <>
+                            <span className="text-sm text-white">Arraste a sua foto aqui</span>
+                            <span className="text-sm text-gray-300">JPG, PNG ou WebP · Máx. 5MB</span>
+                        </>
+                    }
 
                     <span className="button hover-yellow text-sm">
-                        {1 === 2 ? 'Trocar arquivo' : (
+                        {hasFile ? 'Trocar arquivo' : (
                             <>
                                 <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                     <path d="M20 11.08V8l-6-6H6a2 2 0 00-2 2v16c0 1.1.9 2 2 2h6" />

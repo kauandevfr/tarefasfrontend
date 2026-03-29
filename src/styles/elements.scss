@@ -129,3 +129,9 @@ main {
 .span.error {
     color: rgba(var(--red-1000));
 }
+
+.photo-config {
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+}

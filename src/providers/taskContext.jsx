@@ -23,10 +23,8 @@ export function TasksProvider({ children }) {
                 loading: false,
                 items: data,
             });
-
-            console.log(data)
         } catch (error) {
-            showError(error);
+            console.error({ ...error });
         }
     };
 

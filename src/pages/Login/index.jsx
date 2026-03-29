@@ -16,8 +16,7 @@ export default function Login() {
     const handleLogin = async data => {
         try {
             setError(null)
-            await instance.post('/user/login', data);
-
+            const e = await instance.post('/user/login', data);
             navigate(`/dashboard`);
         } catch (error) {
             setError(error.response.data.message)

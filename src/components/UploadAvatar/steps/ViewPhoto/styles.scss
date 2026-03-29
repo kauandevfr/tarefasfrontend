@@ -1,0 +1,14 @@
+.crop-container {
+    width: 260px; // 👈 o tamanho que quiser
+    height: 260px;
+    position: relative;
+    margin: 0 auto; // centraliza no modal
+}
+
+.reactEasyCrop_CropArea {
+    transition: border-radius 0.3s ease !important;
+}
+
+.reactEasyCrop_Container {
+    transition: border-radius 0.3s ease !important;
+}
