@@ -11,6 +11,8 @@ import { useUser } from "../../providers/userContext"
 import { updatePasswordSchema, updateUserSchema } from "../../schemas/user/update"
 import instance from "../../services/instance"
 import "./styles.scss"
+import _CountUp from "react-countup"
+const CountUp = _CountUp.default
 
 export default function User() {
 
@@ -136,19 +138,17 @@ export default function User() {
             </section>
             <div className="surface fade-anim vertical">
                 <h1 className="section-title">Estatísticas</h1>
-                <div className="horizontal g4">
-                    <div className="stat-card">
-                        <h2 className="title text-yellow-800">{tasks.items?.length}</h2>
-                        <h3 className="subtitle">Tarefas criadas</h3>
-                    </div>
-                    <div className="stat-card">
-                        <h2 className="title text-yellow-800">{tasks.items?.filter(t => t.completed).length}</h2>
-                        <h3 className="subtitle">Concluídas</h3>
-                    </div>
-                    <div className="stat-card">
-                        <h2 className="title text-yellow-800">{tasks.items?.filter(t => !t.completed).length}</h2>
-                        <h3 className="subtitle">Em aberto</h3>
-                    </div>
+                <div className="horizontal g4 wrap p2 w100">
+                    {[
+                        { label: "Tarefas criadas", value: tasks.items?.length },
+                        { label: "Concluídas", value: tasks.items?.filter(t => t.completed).length },
+                        { label: "Em aberto", value: tasks.items?.filter(t => !t.completed).length },
+                    ].map(({ label, value }) => (
+                        <div key={label} className="stat-card">
+                            <CountUp className="title text-yellow-800" end={value} duration={2} />
+                            <h3 className="subtitle">{label}</h3>
+                        </div>
+                    ))}
                 </div>
             </div>
             <form className='surface fade-anim vertical' onSubmit={handleSubmit(data => handleEditUser(data, 'data'))}>
