@@ -1,13 +1,19 @@
+import { useEffect } from "react"
 import Aside from "../../components/Aside"
 import Header from "../../components/Header"
-import TaskRow from "../../components/TaskRow/TaskRow"
+import TaskRow from "../../components/TaskRow"
+import { useTask } from "../../providers/taskContext"
 import "./styles.scss"
 // import Calendar from "../../components/Calendar"
 
 
 export default function Dashboard() {
 
+    const { listTasks, tasks } = useTask()
 
+    useEffect(() => {
+        listTasks()
+    }, [])
 
     return (
         <main>
@@ -53,8 +59,12 @@ export default function Dashboard() {
                     </div>
 
                     <div className="vertical g2">
-                        <TaskRow />
-                        <TaskRow />
+                        {tasks.loading ?
+                            <h1> ta carregando</h1>
+                            : tasks.items.length ?
+                                tasks.items.map((task, index) => <TaskRow key={task.id} task={task} index={index} />) :
+                                <h1> nao tem</h1>
+                        }
                     </div>
 
                     {/* <Calendar /> */}

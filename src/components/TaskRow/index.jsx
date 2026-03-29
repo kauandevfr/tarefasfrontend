@@ -1,37 +1,26 @@
+import Badge from "../Badge"
 import "./styles.scss"
 
-export default function TaskRow() {
+export default function TaskRow({ task }) {
 
-    const completed = false
+
+    console.log(task)
 
     return (
-        <div className={`task-row ${completed && 'completed'} surface horizontal between ai-center`}>
+        <div className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center`}>
 
             <div className="horizontal g2">
                 <div className="task-check "></div>
-                <div className="vertical g1">
-                    <div className="task-title text-xl">Assistir vídeo da rosa origami</div>
-
-                    <div className="task-meta high">
-                        <span>Atrasada</span>
+                <div className="vertical g2">
+                    <div className="task-title text-xl">{task.title}</div>
+                    <div className="horizontal g2">
+                        <Badge priority={task.priority} />
+                        <div className="task-meta high">
+                            <span>Atrasada</span>
+                        </div>
                     </div>
-
-                    <div className="task-meta high">
-                        <span>Alta</span>
-                    </div>
-
-
-                    <div className="task-meta medium">
-                        <span>Média</span>
-                    </div>
-
-                    <div className="task-meta low">
-                        <span>Baixa</span>
-                    </div>
-
                 </div>
             </div>
-
             <div className="horizontal g2 task-actions">
                 <button className="button secondary" >
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>

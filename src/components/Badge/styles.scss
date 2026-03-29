@@ -1,0 +1,21 @@
+.task-meta {
+    padding: 1rem;
+    border: 1px solid;
+    width: fit-content;
+    border-radius: var(--b-radius);
+    font-size: 1.4rem;
+
+    $priorities: (
+        'high': --red-1000,
+        'medium': --yellow-1000,
+        'low': --green-1000,
+    );
+
+@each $name, $color in $priorities {
+    &.#{$name} {
+        background-color: rgba(var(#{$color}), .2);
+        border-color: rgba(var(#{$color}));
+        color: rgba(var(#{$color}));
+    }
+}
+}
