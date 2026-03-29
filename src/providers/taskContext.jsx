@@ -11,7 +11,9 @@ export function TasksProvider({ children }) {
 
     const [tasks, setTasks] = useState({
         loading: true,
-        items: []
+        items: [],
+        total: null,
+        completed: null
     });
 
     const listTasks = async date => {
@@ -21,7 +23,8 @@ export function TasksProvider({ children }) {
             setTasks({
                 loading: false,
                 items: data,
-                total: data.length
+                total: data.length,
+                completed: data.filter(t => t.completed).length
             });
         } catch (error) {
             console.error({ ...error });

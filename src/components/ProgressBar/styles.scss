@@ -1,0 +1,20 @@
+.progress-bar-wrap,
+.progress-bar-fill {
+    border-radius: var(--b-radius);
+}
+
+.progress-bar-wrap {
+    height: 1rem;
+    width: 100%;
+    background-color: var(--gray-600);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: rgb(var(--yellow-800));
+    transition: all 1s;
+
+    &.completed {
+        background-color: rgb(var(--green-1200));
+    }
+}

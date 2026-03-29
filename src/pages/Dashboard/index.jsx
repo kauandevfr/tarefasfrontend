@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom"
 import { useDateStore } from "../../providers/useDateRestore"
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import ProgressBar from "../../components/ProgressBar"
 // import Calendar from "../../components/Calendar"
 
 export default function Dashboard() {
@@ -60,13 +61,11 @@ export default function Dashboard() {
 
                         <div className="vertical g1 jc-center w100">
                             <div className="subtitle">Progresso do dia</div>
-                            <div className="progress-bar-wrap">
-                                <div className="progress-bar-fill"></div>
-                            </div>
+                            <ProgressBar />
                         </div>
 
                         <div className="vertical ai-center">
-                            <strong className="text-yellow-800 font-title text-4xl">0/1</strong>
+                            <strong className="text-yellow-800 font-title text-4xl">{tasks.total}/{tasks.completed}</strong>
                             <span className="subtitle">concluídas</span>
                         </div>
                     </div>
