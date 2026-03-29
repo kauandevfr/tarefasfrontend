@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom"
 import ErrorMessage from "../../components/ErrorMessage"
 import Header from "../../components/Header"
 import Toggle from "../../components/Toggle"
@@ -16,6 +17,7 @@ export default function User() {
     const { listUser, user, setPhotoSteps } = useUser()
 
     const { listTasks, tasks } = useTask()
+
 
     const initialValues = {
         data: false,
@@ -99,7 +101,7 @@ export default function User() {
         <main className="vertical ai-center g4">
             <Header />
             <div className="container-return-page">
-                <button className="button secondary hover-yellow return-page" type="button">Voltar para Dashboard</button>
+                <Link className="button secondary hover-yellow" type="button" to='/dashboard'>Voltar para Dashboard</Link>
             </div>
 
             <div className="content-width vertical g1">

@@ -77,7 +77,11 @@
 }
 
 .container-return-page {
-    width: 62vw;
-    position: absolute;
-    top: calc(90px + 4rem);
+    width: var(--content-width);
+    // position: absolute;
+    // top: calc(90px + 4rem);
+
+    .button {
+        width: fit-content;
+    }
 }
