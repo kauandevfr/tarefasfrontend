@@ -202,7 +202,10 @@ export default function User() {
             <form className="surface fade-anim vertical" onSubmit={handleSubmitPass(data => handleEditUser(data, 'pass'))}>
                 <div className="section-title">Segurança</div>
                 <div className="field-group">
-                    <label className="label" htmlFor="currentPassword">Senha atual</label>
+                    <div className="horizontal between ai-center">
+                        <label className="label" htmlFor="currentPassword">Senha atual</label>
+                        <Link className="link" to='/forgot-password'>Esqueceu a senha?</Link>
+                    </div>
                     <input className={`input ${errorsPass.currentPassword && 'error'}`}
                         type="password"
                         id="currentPassword"
