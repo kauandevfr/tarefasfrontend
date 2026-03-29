@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Title from "../Title";
 import "./styles.scss"
 import { useEffect } from "react";
 import { useUser } from "../../providers/userContext";
+import instance from "../../services/instance";
 
 export default function Header() {
-
     const { listUser, user } = useUser()
+    const navigate = useNavigate()
+    const logoutUser = async () => {
+        try {
+            await instance.post('/user/logout')
+        } finally {
+            navigate('/')
+        }
+    }
 
     useEffect(() => {
         listUser()
@@ -17,7 +25,7 @@ export default function Header() {
             <nav className="main-header-menu horizontal between ai-center">
                 <Title />
                 <div className="horizontal g2">
-                    <button className='button' type='button'>
+                    <button className='button' type='button' onClick={logoutUser}>
                         <svg
                             className="logout-icon"
                             viewBox="0 0 24 24"
