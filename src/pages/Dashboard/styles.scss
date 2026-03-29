@@ -11,6 +11,9 @@
 
 .date-nav {
 
+    .title {
+        text-transform: capitalize;
+    }
 
     display: flex;
     justify-content: space-between;

@@ -16,12 +16,14 @@ export default function Login() {
     const handleLogin = async data => {
         try {
             setError(null)
-            const e = await instance.post('/user/login', data);
-            navigate(`/dashboard`);
+            await instance.post('/user/login', data)
+
+            const today = new Date().toISOString().split('T')[0]
+            navigate(`/dashboard?date=${today}`)
         } catch (error) {
             setError(error.response.data.message)
         }
-    };
+    }
 
     return (
         <main className="center">

@@ -14,14 +14,14 @@ export function TasksProvider({ children }) {
         items: []
     });
 
-    const listTasks = async () => {
-        const searchParams = new URLSearchParams(location.search)
+    const listTasks = async date => {
 
         try {
-            const { data } = await instance.get(`/tasks?date=${searchParams.get("date")}`);
+            const { data } = await instance.get('/tasks', { params: { date } })
             setTasks({
                 loading: false,
                 items: data,
+                total: data.length
             });
         } catch (error) {
             console.error({ ...error });

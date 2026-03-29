@@ -224,3 +224,17 @@
 .hidden {
     overflow: hidden;
 }
+
+.opacity-anim {
+    animation: opacity-anim 1s ease-in-out both;
+}
+
+@keyframes opacity-anim {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

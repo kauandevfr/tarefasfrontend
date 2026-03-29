@@ -3,11 +3,10 @@ import "./styles.scss"
 
 export default function TaskRow({ task }) {
 
-
-    console.log(task)
+    const isLate = !task.completed && task.createdat < new Date().toISOString().split('T')[0]
 
     return (
-        <div className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center`}>
+        <div className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center opacity-anim`}>
 
             <div className="horizontal g2">
                 <div className="task-check "></div>
@@ -15,9 +14,11 @@ export default function TaskRow({ task }) {
                     <div className="task-title text-xl">{task.title}</div>
                     <div className="horizontal g2">
                         <Badge priority={task.priority} />
-                        <div className="task-meta high">
-                            <span>Atrasada</span>
-                        </div>
+                        {isLate && (
+                            <div className="task-meta high">
+                                <span>Atrasada</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

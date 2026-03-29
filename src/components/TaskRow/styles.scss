@@ -15,7 +15,7 @@
 
 
 .task-row.completed {
-    opacity: .3;
+    opacity: .3 !important;
 
     .task-title {
         text-decoration: line-through;
