@@ -3,7 +3,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    border-bottom: 1px solid var(--gray-600);
+    border-bottom: 1px solid var(--border-color);
     padding: 2rem 6rem;
     backdrop-filter: blur(1rem);
     z-index: 2;
@@ -36,18 +36,18 @@
 }
 
 .hero-badge {
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
     border-radius: 4rem;
     padding: 1rem 2rem;
     font-size: 1.4rem;
-    color: var(--gray-300);
+    color: var(--color-text-muted);
 }
 
 .hero-badge-dot {
     width: 1.4rem;
     height: 1.4rem;
     border-radius: 50%;
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
 }
 
 // ─── Glow pseudo-elements (hero + cta) ────────────────
@@ -57,7 +57,7 @@
     position: absolute;
     width: 40rem;
     height: 40rem;
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
     filter: blur(10rem);
     opacity: .2;
     border-radius: 50%;
@@ -90,7 +90,7 @@
     width: 28vw;
     height: 40rem;
     border-radius: var(--b-radius);
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
     position: relative;
     animation-delay: .6s !important;
 
@@ -99,7 +99,7 @@
         position: absolute;
         width: 100%;
         height: 6rem;
-        background-color: rgba(var(--yellow-800));
+        background-color: rgb(var(--yellow-800));
         bottom: -3rem;
         border-radius: 60%;
         filter: blur(1rem);
@@ -117,7 +117,7 @@
     gap: 1rem;
     padding: 2rem;
     background-color: var(--gray-800);
-    border-bottom: 1px solid var(--gray-600);
+    border-bottom: 1px solid var(--border-color);
 
     .dot {
         width: 1.4rem;
@@ -149,7 +149,7 @@
 .preview-sidebar {
     padding: 2rem;
     background-color: var(--gray-800);
-    border-right: 1px solid var(--gray-600);
+    border-right: 1px solid var(--border-color);
 }
 
 .preview-main {
@@ -174,7 +174,7 @@
 
 .pm-stat {
     font-family: "DM Serif Display", serif;
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
     font-size: 2.4rem;
 }
 
@@ -188,7 +188,7 @@
 .pm-bar-fill {
     height: 100%;
     width: 50%;
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
     border-radius: var(--b-radius);
 }
 
@@ -199,12 +199,12 @@
 .pm-check {
     width: 1rem;
     height: 1rem;
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
     border-radius: var(--b-radius);
 }
 
 .preview-row {
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
     background-color: var(--gray-800);
     padding: 1rem;
     border-radius: var(--b-radius);
@@ -218,7 +218,7 @@
 // ─── Preview Sidebar items (ps-*) ─────────────────────
 .ps-label,
 .ps-item {
-    color: var(--gray-300);
+    color: var(--color-text-muted);
     padding: .3rem;
     border-radius: var(--b-radius);
     font-size: 1.2rem;
@@ -286,7 +286,7 @@
         left: 0;
         right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(var(--yellow-800)), transparent);
+        background: linear-gradient(90deg, transparent, rgb(var(--yellow-800)), transparent);
         opacity: 0;
         transition: opacity .3s;
     }
@@ -300,13 +300,13 @@
     width: 4.4rem;
     height: 4.4rem;
     border-radius: 10px;
-    background: var(--gray-700);
+    background: var(--color-bg-sec);
     border: 1px solid rgba(var(--yellow-800), .2);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
     position: relative;
 }
 
@@ -318,7 +318,7 @@
 
 .feature-desc {
     font-size: 1.5rem;
-    color: var(--gray-300);
+    color: var(--color-text-muted);
 }
 
 .section-eyebrow {
@@ -365,7 +365,7 @@
     margin: 0 auto 2rem;
     font-family: 'DM Serif Display', serif;
     font-size: 3.2rem;
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
     position: relative;
     z-index: 1;
 }
@@ -377,7 +377,7 @@
 }
 
 .step-desc {
-    color: var(--gray-300);
+    color: var(--color-text-muted);
     font-size: 1.4rem;
     line-height: 1.7;
 }
@@ -449,8 +449,8 @@
     }
 
     &.bot {
-        background: var(--gray-700);
-        border: 1px solid var(--gray-600);
+        background: var(--color-bg-sec);
+        border: 1px solid var(--border-color);
         align-self: flex-start;
         border-bottom-left-radius: 2px;
     }
@@ -465,9 +465,10 @@
 }
 
 .wa-time {
-    color: var(--gray-300);
+    color: var(--color-text-muted);
     font-size: 1.2rem;
 }
+
 // ─── Scroll Reveal ────────────────────────────────────
 .reveal-up {
     opacity: 0;

@@ -11,9 +11,11 @@
     --gray-850: #131313;
     --gray-900: #0f0f0f;
 
+    --yellow-300: 255, 250, 223;
     --yellow-800: 255, 169, 56;
     --yellow-1000: 253, 167, 7;
     --yellow-1200: 201, 140, 26;
+    --yellow-1300: 184, 114, 22;
 
     --red-1000: 255, 41, 41;
     --red-1200: 216, 23, 23;
@@ -31,9 +33,10 @@
     // Redefina estes em html[data-theme="light"] para trocar o tema
     // sem precisar sobrescrever cada classe individualmente.
     --color-bg: var(--gray-900);
+    --color-bg-sec: var(--gray-700);
     --color-surface: var(--gray-800);
-    --color-border: var(--gray-700);
+    --border-color: var(--gray-600);
     --color-text: var(--white);
     --color-text-muted: var(--gray-300);
-    --color-text-primary: rgba(var(--yellow-800));
+    --color-text-primary: rgb(var(--yellow-800));
 }

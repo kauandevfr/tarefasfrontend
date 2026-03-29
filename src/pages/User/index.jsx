@@ -103,7 +103,7 @@ export default function User() {
             <div className="content-width horizontal g1 ai-center between">
                 <div className="vertical g1">
                     <h1 className="title">Meu Perfil</h1>
-                    <p className="subtitle">gerencie suas informações e preferências</p>
+                    <p className="subtitle">Gerencie suas informações e preferências</p>
                 </div>
                 <Link className="button secondary hover-yellow" type="button" to='/dashboard'>Voltar para Dashboard</Link>
             </div>

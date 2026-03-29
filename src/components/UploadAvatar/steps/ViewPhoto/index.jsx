@@ -47,7 +47,7 @@ export default function ViewPhoto() {
                     cropAreaStyle: {
                         borderRadius: `${photoSteps !== 'crop' ? '50%' : '20%'}`,
                         boxShadow: '0 0 0 9999px rgba(23, 23, 23, 0.7)',
-                        border: '3px solid rgba(var(--yellow-800))'
+                        border: '3px solid rgb(var(--yellow-800))'
                     },
                 }}
             />

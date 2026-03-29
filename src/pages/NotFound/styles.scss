@@ -11,7 +11,7 @@
 .divider-line {
     width: 164px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(var(--yellow-800)), transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--yellow-800)), transparent);
 
     animation: fadeUp .5s ease .2s both;
 }
@@ -21,7 +21,7 @@
     content: '404';
     position: absolute;
     inset: 0;
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
     -webkit-text-stroke: 0;
     clip-path: inset(0 100% 0 0);
     animation: reveal 1.2s cubic-bezier(.77, 0, .18, 1) .2s both;
@@ -34,7 +34,7 @@
 }
 
 .blur-404 {
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
     width: 50rem;
     height: 40rem;
     filter: blur(10rem);

@@ -1,9 +1,9 @@
 .main-header {
-    border-bottom: 1px solid var(--gray-600);
+    border-bottom: 1px solid var(--border-color);
     height: 90px;
 
     .user-photo {
-        background-color: rgba(var(--yellow-800));
+        background-color: rgb(var(--yellow-800));
         border-radius: 50%;
         padding: 1rem;
         width: 6rem;

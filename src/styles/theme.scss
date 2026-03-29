@@ -1,0 +1,24 @@
+html[data-theme="light"] {
+
+    --yellow-800: var(--yellow-1300);
+    --border-color: var(--gray-300);
+    --color-text: var(--gray-900);
+    --color-bg: rgb(var(--yellow-300));
+    --color-text-muted: var(--gray-900);
+    --color-bg-sec: rgb(var(--yellow-300));
+
+    .surface {
+        background-color: var(--white);
+    }
+
+    .main-aside {
+        .button:hover {
+            color: var(--white);
+            background-color: rgb(var(--yellow-800));
+        }
+    }
+
+    .input {
+        border: 1px solid var(--border-color);
+    }
+}

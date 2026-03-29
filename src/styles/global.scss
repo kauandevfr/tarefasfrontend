@@ -30,8 +30,8 @@ body,
     max-width: 100vw;
     min-height: calc(100vh - 32px);
     font-family: "DM Mono", monospace;
-    color: var(--white);
-    background: var(--gray-900);
+    color: var(--color-text);
+    background: var(--color-bg);
     position: relative;
 }
 

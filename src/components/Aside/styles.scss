@@ -1,25 +1,25 @@
 .main-aside {
     height: calc(100vh - 32px - 98px);
-    border-right: 1px solid var(--gray-600);
+    border-right: 1px solid var(--border-color);
 
     width: 26rem;
-    background-color: var(--gray-800);
+    background: var(--color-bg);
 
     .button {
-        background: transparent;
-        color: var(--gray-300);
+        background: rgba(var(--yellow-800), .015);
+        color: var(--color-text);
         font-weight: 400;
     }
 
     .button:hover {
-        background: var(--gray-700);
-        color: var(--white);
+        background: rgb(var(--yellow-800));
+        // color: var(--color-text);
     }
 }
 
 .sidebar-label {
     font-size: 1.6rem;
-    color: var(--gray-300);
+    color: var(--color-text-muted);
     margin-top: 2rem;
 }
 

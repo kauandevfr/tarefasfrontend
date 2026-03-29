@@ -18,7 +18,7 @@
 
 .benefit-text span {
     font-size: 1.26rem;
-    color: var(--gray-300);
+    color: var(--color-text-muted);
 }
 
 .benefit-icon {
@@ -31,5 +31,5 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
 }

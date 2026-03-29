@@ -10,11 +10,11 @@
     max-width: 1000px;
     max-height: 90vh;
     border-radius: var(--b-radius);
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
     background-color: var(--gray-800);
 }
 
 .modal-header {
-    border-bottom: 1px solid var(--gray-600);
+    border-bottom: 1px solid var(--border-color);
 
 }

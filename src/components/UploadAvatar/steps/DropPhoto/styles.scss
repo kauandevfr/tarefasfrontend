@@ -4,7 +4,7 @@
     background-color: var(--gray-700);
 
     border-radius: var(--b-radius);
-    border: 2px solid var(--gray-600);
+    border: 2px solid var(--border-color);
     position: relative;
     transition: all .3s ease-in-out;
     padding: 3.2rem 2rem;
@@ -19,7 +19,7 @@
 
     &:hover,
     &.selected {
-        border-color: rgba(var(--yellow-800));
+        border-color: rgb(var(--yellow-800));
         background-color: rgba(var(--yellow-800), .05);
     }
 }

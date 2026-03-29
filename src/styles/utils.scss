@@ -83,7 +83,7 @@
 }
 
 .text-yellow-800 {
-    color: rgba(var(--yellow-800));
+    color: var(--color-text-primary) !important;
 }
 
 .text-gray-900 {
@@ -107,7 +107,7 @@
 }
 
 .text-gray-300 {
-    color: var(--gray-300);
+    color: var(--color-text-muted);
 }
 
 .font-title {

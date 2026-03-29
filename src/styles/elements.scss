@@ -13,12 +13,12 @@ main {
 .subtitle,
 .span {
     font-size: 1.4rem;
-    color: var(--gray-200);
+    color: var(--color-text-muted);
     font-weight: 400;
 }
 
 .link {
-    color: rgba(var(--yellow-800));
+    color: rgb(var(--yellow-800));
     text-decoration: none;
     font-size: 1.4rem;
 }
@@ -27,7 +27,7 @@ main {
     width: 30rem;
     height: 30rem;
 
-    background-color: rgba(var(--yellow-800));
+    background-color: rgb(var(--yellow-800));
     filter: blur(14rem);
     border-radius: 50%;
 
@@ -46,7 +46,7 @@ main {
     max-width: 1000px;
     min-height: 58vh;
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
 
     .footer {
         .font-title {
@@ -70,7 +70,7 @@ main {
         border-radius: 50%;
 
         position: absolute;
-        background-color: rgba(var(--yellow-800));
+        background-color: rgb(var(--yellow-800));
         filter: blur(3rem);
         opacity: .12;
     }
@@ -95,7 +95,7 @@ main {
 .panel-left {
     width: 550px;
     background-color: var(--gray-800);
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
 
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ main {
 
 .surface {
     background-color: var(--gray-800);
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--border-color);
     width: var(--content-width);
     border-radius: var(--b-radius);
     padding: 2.6rem;
@@ -120,9 +120,9 @@ main {
     font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: 1.2px;
-    color: var(--gray-300);
+    color: var(--color-text-muted);
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--gray-600);
+    border-bottom: 1px solid var(--border-color);
     border-radius: var(--b-radius);
 }
 
