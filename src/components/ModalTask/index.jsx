@@ -34,9 +34,7 @@ export default function ModalTask() {
             completed: false,
         })
     }
-
     const handleTask = async data => {
-
         const payload = {
             ...data,
             completed: !showTask.data.completed && false,
@@ -45,8 +43,6 @@ export default function ModalTask() {
                 : data.createdat,
         };
 
-
-        console.log(data)
         try {
             const request = isAdd
                 ? instance.post('/task', payload)
@@ -145,8 +141,8 @@ export default function ModalTask() {
                 <ErrorMessage message={errors.completed?.message} />
             </div>
             <div className="horizontal g2 w100 jc-center">
-                <button className='button secondary w100' type="button" onClick={closeModal}>Cancelar</button>
-                <button className='button w100' type="submit" disabled={isSubmitting}>Enviar</button>
+                <button className='button secondary w100 jc-center' type="button" onClick={closeModal}>Cancelar</button>
+                <button className='button w100 jc-center' type="submit" disabled={isSubmitting}>Enviar</button>
             </div>
         </ModalBase>
     )

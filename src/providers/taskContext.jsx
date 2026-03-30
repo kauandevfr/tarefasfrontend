@@ -41,9 +41,22 @@ export function TasksProvider({ children }) {
 
     const [showTask, setShowTask] = useState(initialTask)
 
+    const [deleteTask, setDeleteTask] = useState({
+        open: false,
+        id: null
+    })
+
     return (
         <TaskContext.Provider
-            value={{ listTasks, tasks, showTask, setShowTask, initialTask }}
+            value={{
+                listTasks,
+                tasks,
+                showTask,
+                setShowTask,
+                initialTask,
+                deleteTask,
+                setDeleteTask
+            }}
         >
             {children}
         </TaskContext.Provider>

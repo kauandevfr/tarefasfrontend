@@ -12,6 +12,7 @@ import ProgressBar from "../../components/ProgressBar"
 import Loader from "../../components/Loader"
 import WithoutList from "../../components/WithoutList"
 import ModalTask from "../../components/ModalTask"
+import ModalDelete from "../../components/ModalDelete"
 // import Calendar from "../../components/Calendar"
 
 export default function Dashboard() {
@@ -87,6 +88,7 @@ export default function Dashboard() {
 
                     {/* <Calendar /> */}
                     <ModalTask />
+                    <ModalDelete />
 
                 </section>
 

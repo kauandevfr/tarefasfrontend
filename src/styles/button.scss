@@ -15,7 +15,6 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
 
     svg {
@@ -35,12 +34,12 @@
 }
 
 .button.hover-red:hover {
-    border-color: rgba(var(--red-1000));
-    color: rgba(var(--red-1000));
+    border-color: rgb(var(--red-1000));
+    color: rgb(var(--red-1000));
 }
 
 .button.bg-red {
-    background: rgba(var(--red-1000));
+    background: rgb(var(--red-1000));
 }
 
 .button:disabled {
@@ -49,5 +48,5 @@
 }
 
 .button.success {
-    background-color: rgba(var(--green-1200));
+    background-color: rgb(var(--green-1200));
 }
