@@ -9,6 +9,8 @@ import { useDateStore } from "../../providers/useDateRestore"
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import ProgressBar from "../../components/ProgressBar"
+import Loader from "../../components/Loader"
+import WithoutList from "../../components/WithoutList"
 // import Calendar from "../../components/Calendar"
 
 export default function Dashboard() {
@@ -70,15 +72,15 @@ export default function Dashboard() {
                         </div>
                     </div>
 
-                    <div className="vertical g2">
+                    <div className="content-width vertical g2">
                         {tasks.loading ?
-                            <h1> ta carregando</h1>
+                            <Loader />
                             : tasks.items.length ?
                                 tasks.items.map((task, index) => <TaskRow
                                     key={task.id}
                                     task={task}
                                     style={{ animationDelay: `${index * 1}s` }} />) :
-                                <h1> nao tem</h1>
+                                <WithoutList />
                         }
                     </div>
 
