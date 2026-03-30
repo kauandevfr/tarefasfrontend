@@ -9,7 +9,7 @@ export default function ProgressBar() {
 
     return (
         <div className="progress-bar-wrap">
-            <div className={`progress-bar-fill ${tasks.completed == tasks.total && 'completed'}`}
+            <div className={`progress-bar-fill ${tasks.completed === tasks.total && tasks.total > 0 ? 'completed' : ''}`}
                 style={{ width: `${progress}%` }}
             />
         </div>
