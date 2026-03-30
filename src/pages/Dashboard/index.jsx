@@ -16,15 +16,20 @@ import { useTask } from "../../providers/taskContext"
 import { useDateStore } from "../../providers/useDateRestore"
 import { useViewStore } from "../../providers/useViewStore"
 import "./styles.scss"
+import Badge from '../../components/Badge'
 
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
     const [, setSearchParams] = useSearchParams()
     const { view } = useViewStore()
 
-    const { listTasks, tasks, setShowTask } = useTask()
+    const { listTasks, tasks, setShowTask, filteredTasks, filter } = useTask()
 
     const { hideAside, setHideAside } = useGlobalContext()
+
+    const statusLabel = { pending: 'Pendentes', completed: 'Concluídas' }
+    const priorityLabel = { high: 'Alta', medium: 'Média', low: 'Baixa' }
+
 
     useEffect(() => {
         setSearchParams(prev => {
@@ -75,6 +80,14 @@ export default function Dashboard() {
                                 </button>
                             </div>
 
+                            {(filter.status !== 'all' || filter.priority) && (
+                                <div className="horizontal ai-center g1 content-width fade-anim">
+                                    <h2 className="subtitle">Filtros selecionados:</h2>
+                                    {filter.status !== 'all' && <span className='task-meta'>{statusLabel[filter.status]}</span>}
+                                    {filter.priority && <Badge priority={filter.priority} />}
+                                </div>
+                            )}
+
                             <div className="surface horizontal g2">
 
                                 <div className="vertical g1 jc-center w100">
@@ -91,8 +104,8 @@ export default function Dashboard() {
                             <div className="content-width vertical g2">
                                 {tasks.loading ?
                                     <Loader />
-                                    : tasks.items.length ?
-                                        tasks.items.map((task, index) => <TaskRow
+                                    : filteredTasks.length ?
+                                        filteredTasks.map((task, index) => <TaskRow
                                             key={task.id}
                                             task={task}
                                             style={{ animationDelay: `${index * 1}s` }} />) :

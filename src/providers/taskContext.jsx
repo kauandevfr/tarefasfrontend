@@ -46,6 +46,21 @@ export function TasksProvider({ children }) {
         id: null
     })
 
+    const [filter, setFilter] = useState({ status: 'all', priority: null })
+
+    const filteredTasks = tasks.items.filter(task => {
+        const statusMatch =
+            filter.status === 'all' ? true :
+                filter.status === 'pending' ? !task.completed :
+                    filter.status === 'completed' ? task.completed : true
+
+        const priorityMatch = filter.priority
+            ? task.priority === filter.priority
+            : true
+
+        return statusMatch && priorityMatch
+    })
+
     return (
         <TaskContext.Provider
             value={{
@@ -55,7 +70,9 @@ export function TasksProvider({ children }) {
                 setShowTask,
                 initialTask,
                 deleteTask,
-                setDeleteTask
+                setDeleteTask,
+                filter, setFilter,
+                filteredTasks
             }}
         >
             {children}

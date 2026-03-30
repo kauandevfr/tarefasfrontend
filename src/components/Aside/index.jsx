@@ -9,13 +9,11 @@ export default function Aside() {
 
     const { hideAside } = useGlobalContext()
 
-    const { tasks } = useTask()
+    const { tasks, setFilter } = useTask()
 
 
     return (
         <aside className={`main-aside p2 vertical g1 ${hideAside && 'hide'}`}>
-
-
 
             <span className="sidebar-label">Visualização</span>
             <button className="button between" type='button' onClick={() => setView('list')}>
@@ -31,29 +29,29 @@ export default function Aside() {
             </button>
 
             <span className="sidebar-label">Filtrar</span>
-            <button className="button" >
+            <button className="button" type='button' onClick={() => setFilter({ status: 'all', priority: null })}>
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
                 <span>Todas</span>
             </button>
-            <button className="button">
+            <button className="button" type='button' onClick={() => setFilter(f => ({ ...f, status: 'pending' }))}>
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
                 <span>Pendentes</span>
             </button>
-            <button className="button" >
+            <button className="button" type='button' onClick={() => setFilter(f => ({ ...f, status: 'completed' }))}>
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
                 <span>Concluídas</span>
             </button>
 
             <span className="sidebar-label">Prioridade</span>
-            <button className="button">
+            <button className="button" type='button' onClick={() => setFilter(f => ({ ...f, priority: f.priority === 'high' ? null : 'high' }))}>
                 <div className='sidebar-dot high' />
                 <span>Alta</span>
             </button>
-            <button className="button" >
+            <button className="button" type='button' onClick={() => setFilter(f => ({ ...f, priority: f.priority === 'medium' ? null : 'medium' }))}>
                 <div className='sidebar-dot medium' />
                 <span>Média</span>
             </button>
-            <button className="button">
+            <button className="button" type='button' onClick={() => setFilter(f => ({ ...f, priority: f.priority === 'low' ? null : 'low' }))}>
                 <div className='sidebar-dot low' />
                 <span>Baixa</span>
             </button>
