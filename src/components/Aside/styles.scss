@@ -1,11 +1,14 @@
 .main-aside {
-    height: calc(100vh - 32px - 98px);
+    position: sticky;
+    top: 0;
+    height: 100vh;
     border-right: 1px solid var(--border-color);
     transition: width 1s ease;
     overflow: hidden;
-
     width: 26rem;
     background: var(--color-bg);
+
+
 
     .button {
         background: rgba(var(--yellow-800), .015);
@@ -15,13 +18,26 @@
 
     .button:hover {
         background: rgb(var(--yellow-800));
-        // color: var(--color-text);
     }
 
     .badge {
         background-color: rgb(var(--yellow-800));
         border-radius: var(--b-radius);
         padding: .5rem;
+    }
+
+
+
+    &.hide {
+        width: 10rem;
+
+        span {
+            display: none;
+        }
+
+        .button {
+            justify-content: center;
+        }
     }
 }
 
@@ -46,22 +62,5 @@
 
     &.low {
         background: rgba(var(--green-1200));
-    }
-}
-
-.sidebar-toggle {
-    width: fit-content !important;
-    margin-left: auto !important;
-}
-
-.main-aside.hide {
-    width: 10rem;
-
-    span {
-        display: none;
-    }
-
-    .button {
-        justify-content: center;
     }
 }

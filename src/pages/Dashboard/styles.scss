@@ -7,6 +7,27 @@
     float: 1;
     width: 100%;
     min-height: 100%;
+    position: relative;
+
+    .sidebar-toggle {
+        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+
+        position: absolute;
+        left: 2rem;
+        top: 2rem;
+        color: initial;
+        z-index: 10;
+
+        &.rotate-svg {
+            svg {
+                transform: perspective(500px) rotateY(180deg);
+                transition: transform 0.5s ease;
+            }
+        }
+    }
 }
 
 .date-nav {

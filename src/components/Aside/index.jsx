@@ -2,11 +2,12 @@ import { useState } from 'react'
 import './styles.scss'
 import { useTask } from '../../providers/taskContext'
 import { useViewStore } from '../../providers/useViewStore'
+import { useGlobalContext } from '../../providers/globalContext'
 
 export default function Aside() {
-    const { view, setView } = useViewStore()
+    const { setView } = useViewStore()
 
-    const [hideAside, setHideAside] = useState(true)
+    const { hideAside } = useGlobalContext()
 
     const { tasks } = useTask()
 
@@ -14,11 +15,7 @@ export default function Aside() {
     return (
         <aside className={`main-aside p2 vertical g1 ${hideAside && 'hide'}`}>
 
-            <button className="button secondary sidebar-toggle" id="sidebar-toggle-btn" title="Fechar menu" type='button'
-                onClick={() => setHideAside(!hideAside)}
-            >
-                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
-            </button>
+
 
             <span className="sidebar-label">Visualização</span>
             <button className="button between" type='button' onClick={() => setView('list')}>

@@ -1,20 +1,21 @@
-import { useEffect, useRef } from "react"
-import Aside from "../../components/Aside"
-import Header from "../../components/Header"
-import TaskRow from "../../components/TaskRow"
-import { useTask } from "../../providers/taskContext"
-import "./styles.scss"
-import { useSearchParams } from "react-router-dom"
-import { useDateStore } from "../../providers/useDateRestore"
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import ProgressBar from "../../components/ProgressBar"
-import Loader from "../../components/Loader"
-import WithoutList from "../../components/WithoutList"
-import ModalTask from "../../components/ModalTask"
-import ModalDelete from "../../components/ModalDelete"
-import { useViewStore } from "../../providers/useViewStore"
+import { useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
+import Aside from "../../components/Aside"
 import Calendar from "../../components/Calendar"
+import Header from "../../components/Header"
+import Loader from "../../components/Loader"
+import ModalDelete from "../../components/ModalDelete"
+import ModalTask from "../../components/ModalTask"
+import ProgressBar from "../../components/ProgressBar"
+import TaskRow from "../../components/TaskRow"
+import WithoutList from "../../components/WithoutList"
+import { useGlobalContext } from "../../providers/globalContext"
+import { useTask } from "../../providers/taskContext"
+import { useDateStore } from "../../providers/useDateRestore"
+import { useViewStore } from "../../providers/useViewStore"
+import "./styles.scss"
 
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
@@ -22,6 +23,8 @@ export default function Dashboard() {
     const { view } = useViewStore()
 
     const { listTasks, tasks, setShowTask } = useTask()
+
+    const { hideAside, setHideAside } = useGlobalContext()
 
     useEffect(() => {
         setSearchParams(prev => {
@@ -37,7 +40,14 @@ export default function Dashboard() {
             <div className="dashboard-content horizontal">
                 <Aside />
 
+
+
                 <section className="tasks-content p4 vertical ai-center g4">
+                    <button className={`button sidebar-toggle center ${hideAside && 'rotate-svg'}`} title="Fechar menu" type='button'
+                        onClick={() => setHideAside(!hideAside)}
+                    >
+                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
+                    </button>
                     {view === 'list' ?
                         <>
                             <div className="horizontal content-width between ai-center">
