@@ -3,7 +3,8 @@
     border: 1px solid;
     width: fit-content;
     border-radius: var(--b-radius);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    transition: opacity .3s ease-in-out;
 
     $priorities: (
         'high': --red-1000,

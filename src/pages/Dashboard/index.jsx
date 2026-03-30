@@ -11,13 +11,14 @@ import { ptBR } from 'date-fns/locale'
 import ProgressBar from "../../components/ProgressBar"
 import Loader from "../../components/Loader"
 import WithoutList from "../../components/WithoutList"
+import ModalTask from "../../components/ModalTask"
 // import Calendar from "../../components/Calendar"
 
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const { listTasks, tasks } = useTask()
+    const { listTasks, tasks, setShowTask } = useTask()
 
     useEffect(() => {
         setSearchParams(prev => {
@@ -41,7 +42,7 @@ export default function Dashboard() {
                                 {format(new Date(date + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                             </p>
                         </div>
-                        <button className="button">
+                        <button className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
                             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
                             Nova Tarefa
                         </button>
@@ -85,6 +86,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* <Calendar /> */}
+                    <ModalTask />
 
                 </section>
 
