@@ -8,7 +8,7 @@ const getInitialDate = () => {
 }
 
 export const useDateStore = create(set => ({
-    date: getInitialDate(), // 👈 já começa com a data correta
+    date: getInitialDate(),
     setDate: date => set({ date }),
     prevDay: () => set(state => {
         const d = new Date(state.date)

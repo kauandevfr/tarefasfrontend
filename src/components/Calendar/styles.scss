@@ -4,12 +4,31 @@
     padding: 1rem;
     min-height: 9.6rem;
     cursor: pointer;
-    background-color: var(--gray-700);
+    background-color: var(--color-bg);
     transition: all .15s;
+
+    &.selected {
+        border: 2px solid rgb(var(--yellow-800)) !important;
+        background-color: rgba(var(--yellow-800), .05) !important;
+    }
+
+    &.today {
+        border: 2px solid var(--gray-300);
+        background-color: var(--color-bg-sec);
+    }
+
+    &.muted {
+        opacity: 0.2;
+        pointer-events: none;
+    }
 }
 
 .cal-day:hover {
-    background-color: var(--gray-600);
+    background-color: rgba(var(--yellow-800), .02);
+
+    .cal-day-num {
+        color: var(--color-text-primary);
+    }
 }
 
 .cal-dow {

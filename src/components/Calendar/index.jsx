@@ -1,15 +1,73 @@
+import { format, getDay, getDaysInMonth, isToday, startOfMonth } from "date-fns"
+import { ptBR } from "date-fns/locale"
+import { useState } from "react"
+import { useTask } from "../../providers/taskContext"
+import { useDateStore } from "../../providers/useDateRestore"
 import "./styles.scss"
 
+const DAYS_OF_WEEK = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+
 export default function Calendar() {
+    const { date, setDate } = useDateStore()
+
+    const { setShowTask } = useTask()
+
+    const [viewDate, setViewDate] = useState(() => {
+        const d = new Date(date + 'T12:00:00')
+        return { year: d.getFullYear(), month: d.getMonth() }
+    })
+
+    const currentDate = new Date(viewDate.year, viewDate.month, 1)
+    const totalDays = getDaysInMonth(currentDate)
+    const firstDayOfWeek = getDay(startOfMonth(currentDate))
+
+    const prevMonthDate = new Date(viewDate.year, viewDate.month - 1, 1)
+    const totalDaysPrevMonth = getDaysInMonth(prevMonthDate)
+    const prevMonthDays = Array.from({ length: firstDayOfWeek }, (_, i) =>
+        totalDaysPrevMonth - firstDayOfWeek + 1 + i
+    )
+
+    const totalCells = Math.ceil((firstDayOfWeek + totalDays) / 7) * 7
+    const nextMonthDaysCount = totalCells - firstDayOfWeek - totalDays
+    const nextMonthDays = Array.from({ length: nextMonthDaysCount }, (_, i) => i + 1)
+
+    const prevMonth = () => {
+        setViewDate(prev => {
+            const d = new Date(prev.year, prev.month - 1, 1)
+            return { year: d.getFullYear(), month: d.getMonth() }
+        })
+    }
+
+    const nextMonth = () => {
+        setViewDate(prev => {
+            const d = new Date(prev.year, prev.month + 1, 1)
+            return { year: d.getFullYear(), month: d.getMonth() }
+        })
+    }
+
+    const resetToday = () => {
+        const today = new Date()
+        setViewDate({ year: today.getFullYear(), month: today.getMonth() })
+        setDate(today.toISOString().split('T')[0])
+    }
+
+    const handleDayClick = (day) => {
+        const year = viewDate.year
+        const month = String(viewDate.month + 1).padStart(2, '0')
+        const d = String(day).padStart(2, '0')
+        setDate(`${year}-${month}-${d}`)
+    }
+
     return (
         <>
-
-            <div className="content-width horizontal between">
+            <div className="content-width horizontal between ai-center">
                 <div className="vertical g1">
                     <h1 className="title">Calendário</h1>
-                    <p className="subtitle">visão mensal</p>
+                    <p className="subtitle">
+                        {(() => { const s = format(new Date(date + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR }); return s.charAt(0).toUpperCase() + s.slice(1) })()}
+                    </p>
                 </div>
-                <button className="button" >
+                <button className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
                     Nova Tarefa
                 </button>
@@ -17,123 +75,54 @@ export default function Calendar() {
 
             <section className="surface g4 vertical">
                 <div className="horizontal ai-center between w100">
-                    <div className="title" id="cal-month-label">Março de 2026</div>
+                    <div className="title">
+                        {(() => { const s = format(currentDate, "MMMM 'de' yyyy", { locale: ptBR }); return s.charAt(0).toUpperCase() + s.slice(1) })()}
+                    </div>
                     <div className="horizontal g2">
-                        <button className="button secondary">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                                <path d="M15 18l-6-6 6-6"></path>
-                            </svg>
+                        <button className="button secondary" onClick={prevMonth}>
+                            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
                         </button>
-                        <button className="button secondary" >Hoje</button>
-                        <button className="button secondary">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                                <path d="M9 18l6-6-6-6"></path>
-                            </svg>
+                        <button className="button secondary" onClick={resetToday}>Hoje</button>
+                        <button className="button secondary" onClick={nextMonth}>
+                            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
                         </button>
                     </div>
                 </div>
 
-                <div className="cal-grid" id="cal-grid">
-                    <div className="cal-dow">Dom</div>
-                    <div className="cal-dow">Seg</div>
-                    <div className="cal-dow">Ter</div>
-                    <div className="cal-dow">Qua</div>
-                    <div className="cal-dow">Qui</div>
-                    <div className="cal-dow">Sex</div>
-                    <div className="cal-dow">Sáb</div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
-                    <div className="cal-day">
-                        <span className="cal-day-num">X</span>
-                    </div>
+                <div className="cal-grid">
+                    {DAYS_OF_WEEK.map(d => (
+                        <div key={d} className="cal-dow">{d}</div>
+                    ))}
+
+                    {prevMonthDays.map(day => (
+                        <div key={`prev-${day}`} className="cal-day muted" onClick={prevMonth}>
+                            <span className="cal-day-num">{day}</span>
+                        </div>
+                    ))}
+
+                    {Array.from({ length: totalDays }, (_, i) => i + 1).map(day => {
+                        const year = currentDate.getFullYear()
+                        const month = String(currentDate.getMonth() + 1).padStart(2, '0')
+                        const dayStr = String(day).padStart(2, '0')
+                        const fullDate = `${year}-${month}-${dayStr}`
+                        const isSelected = fullDate === date
+                        const isCurrentDay = isToday(new Date(fullDate + 'T12:00:00'))
+                        return (
+                            <div
+                                key={day}
+                                className={`cal-day ${isSelected ? 'selected' : ''} ${isCurrentDay ? 'today' : ''}`}
+                                onClick={() => handleDayClick(day)}
+                            >
+                                <span className="cal-day-num">{day}</span>
+                            </div>
+                        )
+                    })}
+
+                    {nextMonthDays.map(day => (
+                        <div key={`next-${day}`} className="cal-day muted" onClick={nextMonth}>
+                            <span className="cal-day-num">{day}</span>
+                        </div>
+                    ))}
                 </div>
             </section>
         </>

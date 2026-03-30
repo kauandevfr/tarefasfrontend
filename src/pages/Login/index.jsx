@@ -19,7 +19,7 @@ export default function Login() {
             await instance.post('/user/login', data)
 
             const today = new Date().toISOString().split('T')[0]
-            navigate(`/dashboard?date=${today}`)
+            navigate(`/dashboard?date=${today}&view=list`)
         } catch (error) {
             setError(error.response.data.message)
         }
