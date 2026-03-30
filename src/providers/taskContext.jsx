@@ -9,15 +9,17 @@ export const useTask = () => {
 
 export function TasksProvider({ children }) {
 
-    const [tasks, setTasks] = useState({
+    const initialTasks = {
         loading: true,
         items: [],
         total: null,
         completed: null
-    });
+    }
+
+    const [tasks, setTasks] = useState(initialTasks);
 
     const listTasks = async date => {
-
+        setTasks(initialTasks);
         try {
             const { data } = await instance.get('/tasks', { params: { date } })
             setTasks({

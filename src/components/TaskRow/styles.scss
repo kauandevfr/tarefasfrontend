@@ -1,18 +1,8 @@
-.task-check {
-    width: 2rem;
-    height: 2rem;
-
-    background-color: rgb(var(--yellow-800));
-    border-radius: var(--b-radius);
-}
-
 .task-actions {
     opacity: 0;
     transition: ease-in-out .2s;
     pointer-events: none;
 }
-
-
 
 .task-row.completed {
     opacity: .3 !important;

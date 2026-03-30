@@ -1,15 +1,35 @@
+import { useTask } from "../../providers/taskContext";
+import { useDateStore } from "../../providers/useDateRestore";
+import instance from "../../services/instance";
 import Badge from "../Badge"
+import Checkbox from "../Checkbox"
 import "./styles.scss"
 
 export default function TaskRow({ task }) {
 
     const isLate = !task.completed && task.createdat < new Date().toISOString().split('T')[0]
 
+    const { date } = useDateStore()
+
+    const { listTasks } = useTask()
+
+    const completeTask = async () => {
+        try {
+            await instance.put(`/task/${task.id}`, { completed: !task.completed });
+            listTasks(date);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center opacity-anim`}>
 
             <div className="horizontal g2">
-                <div className="task-check "></div>
+                <Checkbox
+                    checked={task.completed}
+                    onChange={completeTask}
+                />
                 <div className="vertical g2">
                     <div className="task-title text-xl">{task.title}</div>
                     <div className="horizontal g2">

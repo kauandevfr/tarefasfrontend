@@ -1,0 +1,20 @@
+.checkbox {
+    cursor: pointer;
+
+    .checkbox-box {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        border-radius: var(--b-radius);
+        transition: all .15s;
+    }
+
+    input:checked+.checkbox-box {
+        background-color: rgb(var(--yellow-800));
+    }
+
+}
+
+.checkbox-box {
+    background-color: var(--color-bg-sec)
+}
