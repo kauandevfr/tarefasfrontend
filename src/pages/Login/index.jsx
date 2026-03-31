@@ -7,9 +7,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useDateStore } from "../../providers/useDateRestore";
+import { useUser } from "../../providers/userContext";
 
 export default function Login() {
     const navigate = useNavigate()
+
+    const { setIsAuthenticated } = useUser()
 
     const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm({ resolver: yupResolver(loginSchema) });
     const [error, setError] = useState(null)
@@ -22,6 +25,7 @@ export default function Login() {
             await instance.post('/user/login', data)
 
             resetDate()
+            setIsAuthenticated(true)
             navigate(`/dashboard?date=${new Date().toISOString().split('T')[0]}&view=list`)
         } catch (error) {
             setError(error.response.data.message)
