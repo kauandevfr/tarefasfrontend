@@ -1,9 +1,12 @@
 import { format, getDay, getDaysInMonth, isToday, startOfMonth } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTask } from "../../providers/taskContext"
 import { useDateStore } from "../../providers/useDateRestore"
 import "./styles.scss"
+import instance from "../../services/instance"
+
+import ProgressBar from "../ProgressBar"
 
 const DAYS_OF_WEEK = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
@@ -58,6 +61,22 @@ export default function Calendar() {
         setDate(`${year}-${month}-${d}`)
     }
 
+    const [calendarTasks, setCalendarTasks] = useState([])
+
+    useEffect(() => {
+        const fetchMonthTasks = async () => {
+            const year = viewDate.year
+            const month = String(viewDate.month + 1).padStart(2, '0')
+            const { data } = await instance.get('/tasks', {
+                params: { month: `${year}-${month}` }
+            })
+
+            console.log(data)
+            setCalendarTasks(data)
+        }
+        fetchMonthTasks()
+    }, [viewDate])
+
     return (
         <>
             <div className="content-width horizontal between ai-center">
@@ -107,13 +126,27 @@ export default function Calendar() {
                         const fullDate = `${year}-${month}-${dayStr}`
                         const isSelected = fullDate === date
                         const isCurrentDay = isToday(new Date(fullDate + 'T12:00:00'))
+
+                        const dayTasks = calendarTasks.filter(task =>
+                            task.createdat.split('T')[0] === fullDate
+                        )
+                        const completed = dayTasks.filter(t => t.completed).length
+                        const total = dayTasks.length
+
                         return (
                             <div
                                 key={day}
-                                className={`cal-day ${isSelected ? 'selected' : ''} ${isCurrentDay ? 'today' : ''}`}
+                                className={`cal-day vertical between ${isSelected ? 'selected' : ''} ${isCurrentDay ? 'today' : ''}`}
                                 onClick={() => handleDayClick(day)}
                             >
                                 <span className="cal-day-num">{day}</span>
+
+                                {total && completed ?
+                                    <div className="vertical">
+                                        <span className="cal-day-num">{total}/{completed}</span>
+                                        <ProgressBar completed={completed} total={total} />
+                                    </div>
+                                    : ''}
                             </div>
                         )
                     })}

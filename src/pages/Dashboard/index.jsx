@@ -45,8 +45,6 @@ export default function Dashboard() {
             <div className="dashboard-content horizontal">
                 <Aside />
 
-
-
                 <section className="tasks-content p4 vertical ai-center g4">
                     <button className={`button sidebar-toggle center ${hideAside && 'rotate-svg'}`} title="Fechar menu" type='button'
                         onClick={() => setHideAside(!hideAside)}
@@ -92,7 +90,7 @@ export default function Dashboard() {
 
                                 <div className="vertical g1 jc-center w100">
                                     <div className="subtitle">Progresso do dia</div>
-                                    <ProgressBar />
+                                    <ProgressBar completed={tasks.completed} total={tasks.total} />
                                 </div>
 
                                 <div className="vertical ai-center">

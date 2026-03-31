@@ -1,15 +1,12 @@
-import { useTask } from '../../providers/taskContext'
 import './styles.scss'
 
-export default function ProgressBar() {
+export default function ProgressBar({ total, completed }) {
 
-    const { tasks } = useTask()
-
-    const progress = tasks.total ? (tasks.completed / tasks.total) * 100 : 0;
+    const progress = total ? (completed / total) * 100 : 0;
 
     return (
         <div className="progress-bar-wrap">
-            <div className={`progress-bar-fill ${tasks.completed === tasks.total && tasks.total > 0 ? 'completed' : ''}`}
+            <div className={`progress-bar-fill ${completed === total && total > 0 ? 'completed' : ''}`}
                 style={{ width: `${progress}%` }}
             />
         </div>
