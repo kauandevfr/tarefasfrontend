@@ -6,12 +6,14 @@ import { useUser } from "../../providers/userContext";
 import instance from "../../services/instance";
 
 export default function Header() {
-    const { listUser, user } = useUser()
+    const { listUser, user, setIsAuthenticated, setUser } = useUser()
     const navigate = useNavigate()
     const logoutUser = async () => {
         try {
             await instance.post('/user/logout')
         } finally {
+            setIsAuthenticated(false) // 👈 reseta antes de navegar
+            setUser({ data: {}, loading: false }) // 👈 limpa os dados do usuário
             navigate('/')
         }
     }

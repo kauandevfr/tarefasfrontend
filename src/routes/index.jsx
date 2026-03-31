@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { PrivateRoute, GuestRoute } from "./ProtectedRoute";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -10,15 +11,22 @@ import Home from "../pages/Home";
 export default function MainRoutes() {
     return (
         <Routes>
+            {/* 🔒 Só logados */}
+            <Route element={<PrivateRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/user-settings" element={<User />} />
+            </Route>
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/user-settings" element={<User />} />
+            {/* 🚫 Só deslogados */}
+            <Route element={<GuestRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<Home />} />
+            </Route>
+
+            {/* 🌐 Qualquer um */}
             <Route path="/forgot-pass" element={<ForgotPassword />} />
             <Route path="/*" element={<NotFound />} />
-            <Route path="/" element={<Home />} />
-
         </Routes>
-    )
+    );
 }

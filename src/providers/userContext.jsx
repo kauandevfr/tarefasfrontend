@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import instance from "../services/instance";
 
 const UserContext = createContext();
@@ -10,28 +10,6 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState({ data: {}, loading: true })
-
-    const listUser = async () => {
-        try {
-            const { data } = await instance.get('/user')
-
-            const initials = data.name
-                .trim()
-                .split(' ')
-                .filter(word => word.length > 0)
-                .slice(0, 2)
-                .map(word => word[0].toUpperCase())
-                .join('')
-
-            setUser({ data: { ...data, initials }, loading: false })
-
-            const html = document.querySelector("html");
-            html.setAttribute("data-theme", data.theme);
-
-        } catch (error) {
-            return console.error(error)
-        }
-    }
 
     const [photoSteps, setPhotoSteps] = useState('')
 
@@ -47,15 +25,49 @@ export const UserProvider = ({ children }) => {
 
     const [photoInfos, setPhotoInfos] = useState(initialPhotoInfos);
 
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
+
+    const listUser = async () => {
+        try {
+            const { data } = await instance.get('/user')
+
+            const initials = data.name
+                .trim()
+                .split(' ')
+                .filter(word => word.length > 0)
+                .slice(0, 2)
+                .map(word => word[0].toUpperCase())
+                .join('')
+
+            setUser({ data: { ...data, initials }, loading: false })
+            setIsAuthenticated(true) // 👈 adiciona
+
+            const html = document.querySelector("html");
+            html.setAttribute("data-theme", data.theme);
+
+        } catch (error) {
+            setIsAuthenticated(false) // 👈 adiciona
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        listUser()
+    }, []);
+
+
     return (
         <UserContext.Provider value={{
             listUser,
             user,
+            setUser,
             photoSteps,
             setPhotoSteps,
             photoInfos,
             setPhotoInfos,
-            initialPhotoInfos
+            initialPhotoInfos,
+            isAuthenticated,
+            setIsAuthenticated
         }}>
             {children}
         </UserContext.Provider>
