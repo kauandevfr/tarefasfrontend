@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 export const GlobalContext = createContext({});
 
-export const useGlobalContext = () => {
+export const useGlobal = () => {
     return useContext(GlobalContext);
 };
 
@@ -9,9 +9,33 @@ export function GlobalProvider({ children }) {
 
     const [hideAside, setHideAside] = useState(true)
 
+    const initialAlertInfos = {
+        open: false,
+        message: null,
+        type: null
+    }
+
+    const genId = () =>
+        (globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+
+    const [alertInfos, _setAlertInfos] = useState(initialAlertInfos)
+
+    const setAlertInfos = useCallback((next) => {
+        _setAlertInfos(prev => {
+            const resolved = typeof next === "function" ? next(prev) : next;
+            if (resolved?.open) {
+                return { id: genId(), tag: "success", message: "", onClose: null, ...resolved };
+            }
+            return resolved;
+        });
+    }, []);
+
     return (
         <GlobalContext.Provider
-            value={{ hideAside, setHideAside }}
+            value={{
+                hideAside, setHideAside,
+                alertInfos, setAlertInfos, initialAlertInfos
+            }}
         >
             {children}
         </GlobalContext.Provider>

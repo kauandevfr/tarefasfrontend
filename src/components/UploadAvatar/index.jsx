@@ -1,3 +1,4 @@
+import { useGlobal } from "../../providers/globalContext";
 import { useUser } from "../../providers/userContext";
 import { useSavePhoto } from "../../services/savePhoto";
 import ModalBase from "../ModalBase";
@@ -9,6 +10,8 @@ import './styles.scss'
 export default function UploadAvatar() {
 
     const { photoSteps, setPhotoSteps, photoInfos, setPhotoInfos, initialPhotoInfos } = useUser()
+
+    const { setAlertInfos } = useGlobal()
 
     const handleSave = useSavePhoto();
 
@@ -34,9 +37,9 @@ export default function UploadAvatar() {
     const saveAndClose = () => {
         handleSave()
         closeModal()
+
+        setAlertInfos({ open: true, message: 'Foto de perfil atualizada com sucesso!', type: 'success' })
     }
-
-
 
     return (
         <ModalBase

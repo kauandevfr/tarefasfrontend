@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import instance from '../../services/instance';
 import Checkbox from '../Checkbox';
 import { useDateStore } from '../../providers/useDateRestore';
+import { useGlobal } from "../../providers/globalContext"
 
 export default function ModalTask() {
 
@@ -17,6 +18,8 @@ export default function ModalTask() {
     });
 
     const { showTask, setShowTask, initialTask, listTasks } = useTask()
+
+    const { setAlertInfos } = useGlobal()
 
     const { date } = useDateStore()
 
@@ -51,6 +54,8 @@ export default function ModalTask() {
 
             closeModal();
             listTasks(date);
+
+            setAlertInfos({ open: true, message: `Tarefa ${isAdd ? 'adicionada' : 'atualizada'} com sucesso!`, type: 'success' })
         } catch (error) {
             console.error({ ...error });
         }

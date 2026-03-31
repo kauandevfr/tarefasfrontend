@@ -1,3 +1,4 @@
+import { useGlobal } from "../../providers/globalContext";
 import { useTask } from "../../providers/taskContext";
 import { useDateStore } from "../../providers/useDateRestore";
 import instance from "../../services/instance";
@@ -7,6 +8,9 @@ import './styles.scss'
 export default function ModalDelete() {
 
     const { deleteTask, setDeleteTask, listTasks } = useTask()
+
+    const { setAlertInfos } = useGlobal()
+
     const { date } = useDateStore()
 
     const handleDeleteTask = async e => {
@@ -17,6 +21,8 @@ export default function ModalDelete() {
         try {
             await instance.delete(`/task/${id}`)
             closeModal()
+
+            setAlertInfos({ open: true, message: 'Tarefa excluída com sucesso!', type: 'success' })
             listTasks(date)
         } catch (error) {
             return console.log(error)

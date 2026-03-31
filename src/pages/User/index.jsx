@@ -13,6 +13,8 @@ import instance from "../../services/instance"
 import "./styles.scss"
 import _CountUp from "react-countup"
 const CountUp = _CountUp.default
+import { useGlobal } from "../../providers/globalContext"
+import AlertModal from "../../components/AlertModal"
 
 export default function User() {
 
@@ -20,13 +22,7 @@ export default function User() {
 
     const { listTasks, tasks } = useTask()
 
-
-    const initialValues = {
-        data: false,
-        pass: false
-    }
-
-    const [success, setSuccess] = useState(initialValues)
+    const { setAlertInfos } = useGlobal()
 
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(updateUserSchema),
@@ -49,9 +45,9 @@ export default function User() {
         try {
             await instance.put('/user', data)
             listUser()
-            setSuccess({ ...initialValues, [key]: true })
-            setTimeout(() => setSuccess(initialValues), 2000)
             resetPass()
+
+            setAlertInfos({ open: true, message: 'Dados atualizados com sucesso!', type: 'success' })
         } catch (error) {
             return console.error({ ...error });
         }
@@ -193,9 +189,9 @@ export default function User() {
                 </div>
                 <div className="horizontal g1 jc-end">
                     <button className="button secondary hover-red" type="button">Cancelar</button>
-                    <button className={`button ${success.data && 'success'}`} type="submit" disabled={isSubmitting}>
+                    <button className='button' type="submit" disabled={isSubmitting}>
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                        {success.data ? 'Alterações salvas' : 'Salvar alterações'}
+                        Salvar alterações
                     </button>
                 </div>
             </form>
@@ -236,8 +232,8 @@ export default function User() {
                     </div>
                 </div>
                 <div className="horizontal g1 jc-end">
-                    <button className={`button ${success.pass ? 'success' : ""}`} type="submit" disabled={isSubmittingPass}>
-                        {success.pass ? "Salva com sucesso!" : "Atualizar senha"}
+                    <button className='button' type="submit" disabled={isSubmittingPass}>
+                        Atualziar senha
                     </button>
                 </div>
             </form>
@@ -285,6 +281,7 @@ export default function User() {
                 </div>
             </section>
             <UploadAvatar />
+            <AlertModal />
         </main>
     )
 }

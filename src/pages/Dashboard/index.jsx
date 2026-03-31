@@ -11,12 +11,13 @@ import ModalTask from "../../components/ModalTask"
 import ProgressBar from "../../components/ProgressBar"
 import TaskRow from "../../components/TaskRow"
 import WithoutList from "../../components/WithoutList"
-import { useGlobalContext } from "../../providers/globalContext"
+import { useGlobal } from "../../providers/globalContext"
 import { useTask } from "../../providers/taskContext"
 import { useDateStore } from "../../providers/useDateRestore"
 import { useViewStore } from "../../providers/useViewStore"
 import "./styles.scss"
 import Badge from '../../components/Badge'
+import AlertModal from '../../components/AlertModal'
 
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
@@ -25,11 +26,9 @@ export default function Dashboard() {
 
     const { listTasks, tasks, setShowTask, filteredTasks, filter } = useTask()
 
-    const { hideAside, setHideAside } = useGlobalContext()
+    const { hideAside, setHideAside } = useGlobal()
 
     const statusLabel = { pending: 'Pendentes', completed: 'Concluídas' }
-    const priorityLabel = { high: 'Alta', medium: 'Média', low: 'Baixa' }
-
 
     useEffect(() => {
         setSearchParams(prev => {
@@ -114,7 +113,7 @@ export default function Dashboard() {
                         : <Calendar />}
                     <ModalTask />
                     <ModalDelete />
-
+                    <AlertModal />
                 </section>
 
             </div>

@@ -2,12 +2,12 @@ import { useState } from 'react'
 import './styles.scss'
 import { useTask } from '../../providers/taskContext'
 import { useViewStore } from '../../providers/useViewStore'
-import { useGlobalContext } from '../../providers/globalContext'
+import { useGlobal } from '../../providers/globalContext'
 
 export default function Aside() {
     const { setView } = useViewStore()
 
-    const { hideAside } = useGlobalContext()
+    const { hideAside } = useGlobal()
 
     const { tasks, setFilter } = useTask()
 
