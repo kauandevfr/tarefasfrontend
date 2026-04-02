@@ -3,15 +3,17 @@ import { ptBR } from "date-fns/locale"
 import { useEffect, useState } from "react"
 import { useTask } from "../../providers/taskContext"
 import { useDateStore } from "../../providers/useDateRestore"
-import "./styles.scss"
 import instance from "../../services/instance"
+import "./styles.scss"
 
 import ProgressBar from "../ProgressBar"
+import { useSetView } from "../../providers/useViewStore"
 
 const DAYS_OF_WEEK = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
 export default function Calendar() {
     const { date, setDate } = useDateStore()
+    const setView = useSetView()
 
     const { setShowTask } = useTask()
 
@@ -59,6 +61,7 @@ export default function Calendar() {
         const month = String(viewDate.month + 1).padStart(2, '0')
         const d = String(day).padStart(2, '0')
         setDate(`${year}-${month}-${d}`)
+        setView('list')
     }
 
     const [calendarTasks, setCalendarTasks] = useState([])

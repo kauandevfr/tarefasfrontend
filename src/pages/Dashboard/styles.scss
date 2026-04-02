@@ -11,8 +11,8 @@
 
     .sidebar-toggle {
         padding: 0;
-        width: 2rem;
-        height: 2rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
 
         position: absolute;
@@ -34,6 +34,7 @@
 
     .title {
         text-transform: capitalize;
+        text-align: center;
     }
 
     display: flex;

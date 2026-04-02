@@ -19,6 +19,8 @@ import "./styles.scss"
 import Badge from '../../components/Badge'
 import AlertModal from '../../components/AlertModal'
 
+
+
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
     const [, setSearchParams] = useSearchParams()
@@ -38,6 +40,18 @@ export default function Dashboard() {
         })
         listTasks(date)
     }, [date, view])
+
+
+    function ButtonViewSidebar() {
+        return (
+            <button className={`button sidebar-toggle center ${hideAside && 'rotate-svg'}`} title="Fechar menu" type='button'
+                onClick={() => setHideAside(!hideAside)}
+            >
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
+            </button>
+        )
+    }
+
     return (
         <main>
             <Header />
@@ -45,16 +59,12 @@ export default function Dashboard() {
                 <Aside />
 
                 <section className="tasks-content p4 vertical ai-center g4">
-                    <button className={`button sidebar-toggle center ${hideAside && 'rotate-svg'}`} title="Fechar menu" type='button'
-                        onClick={() => setHideAside(!hideAside)}
-                    >
-                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg>
-                    </button>
+                    <ButtonViewSidebar />
                     {view === 'list' ?
                         <>
-                            <div className="horizontal content-width between ai-center">
+                            <div className="listing-header horizontal content-width between ai-center">
                                 <div className="vertical g1">
-                                    <h1 className="title">Minhas Tarefas</h1>
+                                    <h1 className="title text-nowrap">Minhas Tarefas</h1>
                                     <p className="subtitle opacity-anim" key={date}>
                                         {format(new Date(date + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                                     </p>

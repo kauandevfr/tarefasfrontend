@@ -96,10 +96,10 @@ export default function User() {
     }, [])
 
     return (
-        <main className="vertical ai-center g4">
+        <main className="user-settings-page vertical ai-center g4">
             <Header />
-            <div className="content-width horizontal g1 ai-center between">
-                <div className="vertical g1">
+            <div className="header-user-settings content-width horizontal g1 ai-center between">
+                <div className="texts vertical g1">
                     <h1 className="title">Meu Perfil</h1>
                     <p className="subtitle">Gerencie suas informações e preferências</p>
                 </div>
@@ -124,7 +124,7 @@ export default function User() {
                             <h3 className="title text-yellow-800">{user.data?.name}</h3>
                             <p className="subtitle">{user.data?.email}</p>
                         </div>
-                        <div className="horizontal g1">
+                        <div className="user-photo-actions horizontal g1">
                             <button className="button secondary hover-yellow" type='button' onClick={() => setPhotoSteps('select')}>Alterar foto</button>
                             <button className="button secondary hover-red" type='button' onClick={deletePhoto} >Remover</button>
                         </div>
@@ -134,7 +134,7 @@ export default function User() {
             </section>
             <div className="surface fade-anim vertical">
                 <h1 className="section-title">Estatísticas</h1>
-                <div className="horizontal g4 wrap p2 w100">
+                <div className="horizontal g4 wrap w100">
                     {[
                         { label: "Tarefas criadas", value: tasks.items?.length },
                         { label: "Concluídas", value: tasks.items?.filter(t => t.completed).length },

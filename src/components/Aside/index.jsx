@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import './styles.scss'
-import { useTask } from '../../providers/taskContext'
-import { useViewStore } from '../../providers/useViewStore'
 import { useGlobal } from '../../providers/globalContext'
+import { useTask } from '../../providers/taskContext'
+import { useSetView } from '../../providers/useViewStore'
+import './styles.scss'
 
 export default function Aside() {
-    const { setView } = useViewStore()
+
+    const setView = useSetView()
 
     const { hideAside } = useGlobal()
 

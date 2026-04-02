@@ -1,14 +1,245 @@
+@media (max-width: 1600px) {
+    :root {
+        --content-width: 80vw;
+    }
+}
+
 /* --- DESKTOP PEQUENO / LAPTOP (≤ 1200px) --- */
-@media (max-width: 1200px) {}
+@media (max-width: 1200px) {
+
+    .main-aside {
+        position: fixed;
+        z-index: 10;
+        transform: translateX(0);
+        transition: transform 1s;
+        width: 26rem !important;
+
+        span {
+            display: block !important;
+        }
+
+        &.hide {
+
+            transform: translateX(-100%);
+        }
+    }
+
+    .tasks-content .sidebar-toggle {
+
+        position: fixed;
+        top: unset !important;
+        left: 4rem;
+        bottom: 4rem;
+    }
+}
 
 /* --- TABLETS EM PAISAGEM / LAPTOPS (≤ 992px) --- */
-@media (max-width: 992px) {}
+@media (max-width: 992px) {
+    :root {
+        --pad-in-sec: 8rem 0;
+        --content-width: 92vw;
+    }
+
+    .without-list {
+        .subtitle {
+            font-size: 1.5rem;
+        }
+    }
+
+    .num-404 {
+        font-size: 20rem;
+    }
+
+    .blur-404,
+    .hero-inner::after,
+    .cta-section::before {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .wrapper {
+        width: 92%;
+
+        .panel-right {
+            display: none;
+        }
+
+        .panel-left {
+            width: 100%;
+        }
+
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 8rem;
+    }
+
+    .how .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        &::before {
+            display: none;
+        }
+    }
+}
 
 /* --- TABLETS EM RETRATO (≤ 768px) --- */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+
+    .cal-day {
+        min-height: 6rem;
+    }
+
+    .preview-wrap {
+        width: 100%;
+
+    }
+
+    .whatsapp-section {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
 
 /* --- CELULARES (≤ 576px) --- */
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+    .preference-row {
+        text-align: center;
+        gap: 1.6rem;
+    }
+
+    .preference-row .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .user-photo-section,
+    .surface {
+        gap: 2rem;
+    }
+
+    .section-title,
+    .preference-title {
+        font-size: 1.4rem;
+    }
+
+    .label,
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .surface {
+        padding: 1rem;
+    }
+
+    .header-user-settings {
+        flex-direction: column;
+
+        .texts {
+            align-items: center;
+
+            .subtitle {
+                text-align: center;
+            }
+        }
+
+        .button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .tasks-content {
+        padding: 2rem;
+        gap: 3rem;
+    }
+
+    .user-settings-page {
+        gap: 3rem;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 3rem !important;
+    }
+
+    .date-nav .title {
+        white-space: nowrap;
+    }
+
+    .landing-nav {
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+        line-height: .9;
+    }
+
+    .button {
+        font-size: 1.3rem;
+        // padding: .5rem 1rem;
+    }
+
+    .title {
+        font-size: 3.8rem;
+    }
+
+    .user-photo-section {
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+
+        .user-photo-actions {
+            justify-content: center;
+        }
+    }
+
+    .priority-section,
+    .preference-row {
+        flex-direction: column;
+    }
+}
 
 /* --- CELULARES MUITO PEQUENOS (≤ 360px) --- */
-@media (max-width: 360px) {}
+@media (max-width: 448px) {
+
+    .listing-header {
+        text-align: center;
+        flex-direction: column;
+        gap: 2rem;
+
+        .button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .date-nav {
+        padding: 0;
+        gap: 1rem;
+        border: none;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+
+        .button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+}

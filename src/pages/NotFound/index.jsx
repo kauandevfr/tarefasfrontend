@@ -7,7 +7,7 @@ export default function NotFound() {
         <main className="center">
             <div className="blur-404" />
             <Title />
-            <div className="center g4 fade-anim">
+            <div className="center g2 fade-anim">
                 <div className="glitch-wrap">
                     <div className="num-404 font-title">404</div>
                 </div>

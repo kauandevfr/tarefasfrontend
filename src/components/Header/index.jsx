@@ -12,8 +12,9 @@ export default function Header() {
         try {
             await instance.post('/user/logout')
         } finally {
-            setIsAuthenticated(false) // 👈 reseta antes de navegar
-            setUser({ data: {}, loading: false }) // 👈 limpa os dados do usuário
+            setIsAuthenticated(false)
+            setUser({ data: {}, loading: false })
+            document.documentElement.removeAttribute('data-theme')
             navigate('/')
         }
     }
@@ -24,7 +25,7 @@ export default function Header() {
 
     return (
         <header className="main-header center w100">
-            <nav className="main-header-menu horizontal between ai-center">
+            <nav className="main-header-menu horizontal between ai-center wrap">
                 <Title />
                 <div className="horizontal g2">
                     <button className='button' type='button' onClick={logoutUser}>

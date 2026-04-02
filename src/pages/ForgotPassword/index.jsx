@@ -32,7 +32,7 @@ export default function ForgotPassword() {
                         <p className="span">Enviaremos um link seguro para você redefinir sua senha rapidinho.</p>
                     </div>
 
-                    <div className="steps vertical g1">
+                    {/* <div className="steps vertical g1">
                         <div className="step">
                             <h3 className="step-num">1</h3>
                             <p className="span">Informe seu e-mail cadastrado</p>
@@ -45,7 +45,7 @@ export default function ForgotPassword() {
                             <h3 className="step-num">3</h3>
                             <p className="span">Clique no link e crie uma nova senha</p>
                         </div>
-                    </div>
+                    </div> */}
 
                 </form>
                 <div className="panel-left p4">
@@ -67,7 +67,7 @@ export default function ForgotPassword() {
 
                     </div>
                     <div className="vertical g2">
-                        <button className="button w100"
+                        <button className="button w100 jc-center"
                             type="submit"
                         >
                             Enviar link de recuperação

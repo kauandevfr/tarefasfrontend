@@ -19,7 +19,7 @@ export default function Home() {
 
     return (
         <main className='center'>
-            <section className="hero center">
+            <section className="hero center content-width">
 
                 <nav className='landing-nav horizontal between ai-center'>
                     <Title />
@@ -41,16 +41,15 @@ export default function Home() {
                         <span>Gerenciador de tarefas pessoal</span>
                     </div>
 
-                    <h1 className="title text-center hero-title fade-anim">
+                    <h1 className="text-center hero-title font-title fade-anim">
                         Organize o que<br /><span className='text-yellow-800'>realmente importa.</span>
                     </h1>
 
-                    <p className="subtitle text-xl text-center fade-anim">
-                        Controle suas tarefas por prioridade, acompanhe seu
-                        <br /> progresso diário e receba lembretes direto no WhatsApp.
+                    <p className="subtitle text-center fade-anim">
+                        Controle suas tarefas por prioridade, acompanhe seu progresso diário e receba lembretes direto no WhatsApp.
                     </p>
 
-                    <div className="hero-actions horizontal g2 fade-anim">
+                    <div className="hero-actions horizontal g2 fade-anim wrap">
                         <Link className="button" to='/register'>
                             Começar agora
                             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -90,7 +89,7 @@ export default function Home() {
                                     <div className="ps-item"><span className="ps-dot low" ></span>Baixa</div>
                                 </div>
                                 <div className="preview-main vertical g1">
-                                    <div className="pm-header horizontal w100 between">
+                                    <div className="pm-header horizontal w100 between ai-center wrap g2">
                                         <div className='vertical'>
                                             <div className="text-xl font-title">Minhas Tarefas</div>
                                             <div className="pm-date text-gray-300">17 de março de 2026</div>
@@ -204,7 +203,7 @@ export default function Home() {
             </section>
 
             {/* ── How it works ── */}
-            <section className="how vertical content-width" id="como-funciona">
+            <section className="how vertical g4 content-width" id="como-funciona">
                 <div className="vertical g2">
                     <span className="uppercase text-sm text-yellow-800 text-w-800">Como funciona</span>
                     <h2 className="section-heading title">Três passos<br /><span className='text-yellow-800'>pra começar.</span></h2>
@@ -212,25 +211,25 @@ export default function Home() {
 
                 <div className="steps">
                     <div ref={s1.ref} className={`step reveal-up${s1.visible ? ' visible' : ''}`} style={{ transitionDelay: '0s' }}>
-                        <div className="step-num">1</div>
-                        <div className="step-title">Crie sua conta</div>
-                        <div className="step-desc">Cadastro simples com nome, e-mail e senha. Sem burocracia, sem planos confusos.</div>
+                        <h2 className="step-num">1</h2>
+                        <h3 className="step-title">Crie sua conta</h3>
+                        <p className="step-desc">Cadastro simples com nome, e-mail e senha. Sem burocracia, sem planos confusos.</p>
                     </div>
                     <div ref={s2.ref} className={`step reveal-up${s2.visible ? ' visible' : ''}`} style={{ transitionDelay: '.2s' }}>
-                        <div className="step-num">2</div>
-                        <div className="step-title">Adicione tarefas</div>
-                        <div className="step-desc">Título, prioridade e data de vencimento. Tudo num modal rápido ou pelo WhatsApp.</div>
+                        <h2 className="step-num">2</h2>
+                        <h3 className="step-title">Adicione tarefas</h3>
+                        <p className="step-desc">Título, prioridade e data de vencimento. Tudo num modal rápido ou pelo WhatsApp.</p>
                     </div>
                     <div ref={s3.ref} className={`step reveal-up${s3.visible ? ' visible' : ''}`} style={{ transitionDelay: '.4s' }}>
-                        <div className="step-num">3</div>
-                        <div className="step-title">Acompanhe o progresso</div>
-                        <div className="step-desc">Veja quanto você concluiu no dia, filtre por prioridade e navegue no calendário.</div>
+                        <h2 className="step-num">3</h2>
+                        <h3 className="step-title">Acompanhe o progresso</h3>
+                        <p className="step-desc">Veja quanto você concluiu no dia, filtre por prioridade e navegue no calendário.</p>
                     </div>
                 </div>
             </section>
 
             {/* ── Priority Section ── */}
-            <section className="priority-section content-width horizontal">
+            <section className="priority-section content-width horizontal g4">
                 <div className="priority-texts vertical g2">
                     <div className="uppercase text-sm text-yellow-800 text-w-800">Prioridades</div>
                     <h2 className="title">Saiba o que<br /><span className='text-yellow-800'>fazer primeiro.</span></h2>
@@ -262,7 +261,7 @@ export default function Home() {
             {/* ── WhatsApp ── */}
             <section className="whatsapp" id="whatsapp">
                 <div className="whatsapp-section content-width">
-                    <div className='vertical g2 ai-start'>
+                    <div className='whatsapp-content vertical g2 ai-start'>
                         <div className="whatsapp-badge">
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
@@ -275,7 +274,7 @@ export default function Home() {
                             mensagem — sem abrir o app.
                         </p>
                     </div>
-                    <div className="vertical g1">
+                    <div className="whatsapp-content vertical g1">
                         <div ref={wm1.ref} className={`wa-msg bot reveal-up${wm1.visible ? ' visible' : ''}`} style={{ transitionDelay: '0s' }}>
                             Olá, Kauan! 👋 Você tem <strong>2 tarefas abertas</strong> para hoje. Deseja ver a lista?
                             <div className="wa-time">09:00</div>
@@ -306,7 +305,7 @@ export default function Home() {
             <section ref={cta.ref} className={`cta-section content-width center reveal-up${cta.visible ? ' visible' : ''}`}>
                 <div className="vertical ai-center g2">
                     <h2 className="title text-center">Pronto pra organizar<br /><span className='text-yellow-800'>seu dia?</span></h2>
-                    <p className="subtitle">Gratuito. Sem anúncios. Sem complicação.</p>
+                    <p className="subtitle text-center">Gratuito. Sem anúncios. Sem complicação.</p>
                     <Link className="button font-title" to='/register' >
                         Começar agora
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

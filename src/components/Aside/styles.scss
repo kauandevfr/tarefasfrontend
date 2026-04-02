@@ -26,17 +26,11 @@
         padding: .5rem;
     }
 
-
-
     &.hide {
         width: 10rem;
 
         span {
             display: none;
-        }
-
-        .button {
-            justify-content: center;
         }
     }
 }

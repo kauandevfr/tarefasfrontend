@@ -1,18 +1,7 @@
-.task-actions {
-    opacity: 0;
-    transition: ease-in-out .2s;
-    pointer-events: none;
-}
-
 .task-row.completed {
     opacity: .3 !important;
 
     .task-title {
         text-decoration: line-through;
     }
-}
-
-.task-row:hover .task-actions {
-    opacity: 1;
-    pointer-events: all;
 }
