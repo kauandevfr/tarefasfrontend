@@ -12,17 +12,17 @@ export default function MainRoutes() {
     return (
         <Routes>
             {/* 🔒 Só logados */}
-            {/* <Route element={<PrivateRoute />}> */}
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/user-settings" element={<User />} />
-            {/* </Route> */}
+            <Route element={<PrivateRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/user-settings" element={<User />} />
+            </Route>
 
             {/* 🚫 Só deslogados */}
-            {/* <Route element={<GuestRoute />}> */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
-            {/* </Route> */}
+            <Route element={<GuestRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<Home />} />
+            </Route>
 
             {/* 🌐 Qualquer um */}
             <Route path="/forgot-pass" element={<ForgotPassword />} />
