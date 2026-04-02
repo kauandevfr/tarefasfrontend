@@ -4,36 +4,30 @@
     }
 }
 
-/* --- DESKTOP PEQUENO / LAPTOP (≤ 1200px) --- */
 @media (max-width: 1200px) {
-
     .main-aside {
         position: fixed;
         z-index: 10;
         transform: translateX(0);
         transition: transform 1s;
-        width: 26rem !important;
 
         span {
-            display: block !important;
+            display: block;
         }
 
         &.hide {
-
             transform: translateX(-100%);
         }
     }
 
     .tasks-content .sidebar-toggle {
-
         position: fixed;
-        top: unset !important;
+        top: unset;
         left: 4rem;
         bottom: 4rem;
     }
 }
 
-/* --- TABLETS EM PAISAGEM / LAPTOPS (≤ 992px) --- */
 @media (max-width: 992px) {
     :root {
         --pad-in-sec: 8rem 0;
@@ -58,7 +52,7 @@
     }
 
     .wrapper {
-        width: 92%;
+        width: 95%;
 
         .panel-right {
             display: none;
@@ -67,7 +61,6 @@
         .panel-left {
             width: 100%;
         }
-
     }
 
     .nav-links {
@@ -89,44 +82,40 @@
     }
 }
 
-/* --- TABLETS EM RETRATO (≤ 768px) --- */
 @media (max-width: 768px) {
-
     .cal-day {
-        min-height: 6rem;
+        min-height: fit-content;
     }
 
     .preview-wrap {
         width: 100%;
-
     }
 
     .whatsapp-section {
-        display: flex !important;
+        display: flex;
         flex-direction: column;
     }
 }
 
-/* --- CELULARES (≤ 576px) --- */
 @media (max-width: 576px) {
-    .preference-row {
-        text-align: center;
-        gap: 1.6rem;
+
+    .title {
+        font-size: 3rem;
     }
 
-    .preference-row .button {
-        width: 100%;
-        justify-content: center;
+    .hero-title {
+        font-size: 5rem;
+        line-height: .9;
     }
 
-    .user-photo-section,
-    .surface {
-        gap: 2rem;
+    .date-nav .title {
+        white-space: nowrap;
     }
 
     .section-title,
-    .preference-title {
-        font-size: 1.4rem;
+    .preference-title,
+    .button {
+        font-size: 1.3rem;
     }
 
     .label,
@@ -134,8 +123,62 @@
         font-size: 1.2rem;
     }
 
+    /* Espaçamentos */
+    .tasks-content,
+    .user-settings-page {
+        gap: 3rem;
+    }
+
+    .tasks-content {
+        padding: 2rem;
+    }
+
+    .panel-left {
+        padding: 2rem;
+    }
+
     .surface {
         padding: 1rem;
+        gap: 2rem;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    /* Flex coluna */
+    .priority-section,
+    .preference-row,
+    .user-photo-section {
+        flex-direction: column;
+    }
+
+    .preference-row {
+        text-align: center;
+        gap: 1.6rem;
+    }
+
+    /* Botões full-width */
+    .preference-row .button,
+    .header-user-settings .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Navegação */
+    .landing-nav {
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    /* Componentes */
+    .user-photo-section {
+        align-items: center;
+        text-align: center;
+
+        .user-photo-actions {
+            justify-content: center;
+        }
     }
 
     .header-user-settings {
@@ -148,72 +191,44 @@
                 text-align: center;
             }
         }
-
-        .button {
-            width: 100%;
-            justify-content: center;
-        }
     }
 
-    .tasks-content {
-        padding: 2rem;
-        gap: 3rem;
-    }
-
-    .user-settings-page {
-        gap: 3rem;
-    }
-
-    .modal-content {
-        width: 90%;
-    }
-
-    .title {
-        font-size: 3rem !important;
-    }
-
-    .date-nav .title {
-        white-space: nowrap;
-    }
-
-    .landing-nav {
-        gap: 1rem;
+    .calendar-header {
         justify-content: center;
-    }
 
-    .hero-title {
-        font-size: 5rem;
-        line-height: .9;
-    }
+        .buttons {
+            gap: 1rem;
+            width: 100%;
 
-    .button {
-        font-size: 1.3rem;
-        // padding: .5rem 1rem;
-    }
-
-    .title {
-        font-size: 3.8rem;
-    }
-
-    .user-photo-section {
-        flex-direction: column;
-        align-items: center;
-
-        text-align: center;
-
-        .user-photo-actions {
-            justify-content: center;
+            .button {
+                justify-content: center;
+                flex: 1;
+            }
         }
-    }
-
-    .priority-section,
-    .preference-row {
-        flex-direction: column;
     }
 }
 
-/* --- CELULARES MUITO PEQUENOS (≤ 360px) --- */
 @media (max-width: 448px) {
+    .button {
+        padding: .8rem;
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 2.2rem !important;
+    }
+
+    .cal-day {
+        padding: .8rem;
+        min-height: fit-content;
+    }
+
+    .cal-day-num,
+    .cal-dow,
+    .cal-day {
+        font-size: 2cqw;
+        // font-size: .9rem;
+    }
 
     .listing-header {
         text-align: center;

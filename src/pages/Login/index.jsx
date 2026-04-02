@@ -75,7 +75,7 @@ export default function Login() {
                         >
                             Iniciar sessão
                         </button>
-                        <span className="span horizontal g1 jc-center">
+                        <span className="span horizontal g1 jc-center wrap">
                             Não tem uma conta?
                             <Link className="link" to='/register'>
                                 Criar conta

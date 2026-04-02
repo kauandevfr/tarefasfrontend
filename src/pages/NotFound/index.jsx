@@ -1,7 +1,10 @@
+import { Link, useNavigate } from "react-router-dom"
 import Title from "../../components/Title"
 import "./styles.scss"
 
 export default function NotFound() {
+    const navigate = useNavigate()
+
     return (
 
         <main className="center">
@@ -15,15 +18,15 @@ export default function NotFound() {
                 <h1 className="title">Página não encontrada.</h1>
                 <p className="subtitle text-center">O endereço que você tentou acessar não existe<br />ou foi movido para outro lugar.</p>
                 <div className="horizontal g2">
-                    <button className="button" type="button">
+                    <Link className="button" type="button" to='/dashboard'>
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         Ir para o início
-                    </button>
+                    </Link>
 
-                    <a className="button secondary" href="javascript:history.back()">
+                    <button className="button secondary" onClick={() => navigate(-1)}>
                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
                         Voltar
-                    </a>
+                    </button>
                 </div>
             </div>
         </main>

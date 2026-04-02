@@ -200,7 +200,7 @@ export default function User() {
                 <div className="field-group">
                     <div className="horizontal between ai-center">
                         <label className="label" htmlFor="currentPassword">Senha atual</label>
-                        <Link className="link" to='/forgot-password'>Esqueceu a senha?</Link>
+                        <Link className="link" to='/forgot-pass'>Esqueceu a senha?</Link>
                     </div>
                     <input className={`input ${errorsPass.currentPassword && 'error'}`}
                         type="password"

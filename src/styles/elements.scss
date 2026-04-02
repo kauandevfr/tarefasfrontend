@@ -18,9 +18,12 @@ main {
 }
 
 .link {
+    all: unset;
+    cursor: pointer;
     color: rgb(var(--yellow-800));
     text-decoration: none;
     font-size: 1.4rem;
+    background: none;
 }
 
 .blur {

@@ -96,11 +96,11 @@ export default function Calendar() {
             </div>
 
             <section className="surface g4 vertical">
-                <div className="horizontal ai-center between w100">
+                <div className="calendar-header horizontal ai-center between w100 wrap g1">
                     <div className="title">
                         {(() => { const s = format(currentDate, "MMMM 'de' yyyy", { locale: ptBR }); return s.charAt(0).toUpperCase() + s.slice(1) })()}
                     </div>
-                    <div className="horizontal g2">
+                    <div className="buttons horizontal g2">
                         <button className="button secondary" onClick={prevMonth}>
                             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
                         </button>

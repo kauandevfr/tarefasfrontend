@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Title from "../../components/Title"
 import "./styles.scss"
 
 export default function ForgotPassword() {
+    const navigate = useNavigate()
+
     return (
         <main className="center">
             <div className="blur" />
@@ -73,9 +75,9 @@ export default function ForgotPassword() {
                             Enviar link de recuperação
                         </button>
                         <span className="span horizontal g1 jc-center">
-                            <Link className="link" to='/register'>
+                            <button className="link" onClick={() => navigate(-1)}>
                                 Voltar para o login
-                            </Link>
+                            </button>
                         </span>
                     </div>
                 </div>

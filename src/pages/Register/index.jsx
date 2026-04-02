@@ -147,7 +147,7 @@ export default function Register() {
                         >
                             Criar conta
                         </button>
-                        <span className="span horizontal g1 jc-center">
+                        <span className="span horizontal g1 jc-center wrap">
                             Já tem uma conta?
                             <Link className="link" to='/login'>
                                 Fazer login
