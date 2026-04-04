@@ -30,11 +30,28 @@ export function GlobalProvider({ children }) {
         });
     }, []);
 
+    const showError = error => {
+
+        const data = error.response?.data;
+
+        console.error(error);
+
+
+        return setAlertInfos({
+            open: true,
+            message: data.message,
+            type: "error"
+        });
+
+    };
+
+
     return (
         <GlobalContext.Provider
             value={{
                 hideAside, setHideAside,
-                alertInfos, setAlertInfos, initialAlertInfos
+                alertInfos, setAlertInfos,
+                initialAlertInfos, showError
             }}
         >
             {children}

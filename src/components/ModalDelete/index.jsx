@@ -9,7 +9,7 @@ export default function ModalDelete() {
 
     const { deleteTask, setDeleteTask, listTasks } = useTask()
 
-    const { setAlertInfos } = useGlobal()
+    const { setAlertInfos, showError } = useGlobal()
 
     const { date } = useDateStore()
 
@@ -25,7 +25,7 @@ export default function ModalDelete() {
             setAlertInfos({ open: true, message: 'Tarefa excluída com sucesso!', type: 'success' })
             listTasks(date)
         } catch (error) {
-            return console.log(error)
+            return showError(error)
         }
     }
 

@@ -1,3 +1,4 @@
+import { useGlobal } from "../../providers/globalContext";
 import { useTask } from "../../providers/taskContext";
 import { useDateStore } from "../../providers/useDateRestore";
 import instance from "../../services/instance";
@@ -11,6 +12,8 @@ export default function TaskRow({ task }) {
 
     const { date } = useDateStore()
 
+    const { showError } = useGlobal()
+
     const { listTasks, setShowTask, setDeleteTask } = useTask()
 
     const completeTask = async () => {
@@ -18,7 +21,7 @@ export default function TaskRow({ task }) {
             await instance.put(`/task/${task.id}`, { completed: !task.completed });
             listTasks(date);
         } catch (error) {
-            console.log(error);
+            showError(error);
         }
     };
 

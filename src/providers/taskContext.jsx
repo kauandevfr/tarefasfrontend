@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import instance from "../services/instance";
+import { useGlobal } from "./globalContext";
 
 export const TaskContext = createContext({});
 
@@ -8,6 +9,8 @@ export const useTask = () => {
 };
 
 export function TasksProvider({ children }) {
+
+    const { showError } = useGlobal()
 
     const initialTasks = {
         loading: true,
@@ -29,7 +32,7 @@ export function TasksProvider({ children }) {
                 completed: data.filter(t => t.completed).length
             });
         } catch (error) {
-            console.error({ ...error });
+            return showError(error)
         }
     };
 

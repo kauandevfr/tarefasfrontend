@@ -19,7 +19,7 @@ export default function ModalTask() {
 
     const { showTask, setShowTask, initialTask, listTasks } = useTask()
 
-    const { setAlertInfos } = useGlobal()
+    const { setAlertInfos, showError } = useGlobal()
 
     const { date } = useDateStore()
 
@@ -57,7 +57,7 @@ export default function ModalTask() {
 
             setAlertInfos({ open: true, message: `Tarefa ${isAdd ? 'adicionada' : 'atualizada'} com sucesso!`, type: 'success' })
         } catch (error) {
-            console.error({ ...error });
+            return showError(error)
         }
     }
 

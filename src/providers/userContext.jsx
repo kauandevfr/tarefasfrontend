@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import instance from "../services/instance";
+import { useGlobal } from "./globalContext";
 
 const UserContext = createContext();
 
@@ -8,6 +9,8 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
+
+    const { showError } = useGlobal()
 
     const [user, setUser] = useState({ data: {}, loading: true })
 
@@ -47,7 +50,7 @@ export const UserProvider = ({ children }) => {
 
         } catch (error) {
             setIsAuthenticated(false) // 👈 adiciona
-            console.error(error)
+            return showError(error)
         }
     }
 

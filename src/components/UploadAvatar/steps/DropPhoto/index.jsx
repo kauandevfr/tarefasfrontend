@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import './styles.scss'
 import { useUser } from '../../../../providers/userContext';
+import { useGlobal } from '../../../../providers/globalContext';
 
 export default function DropPhoto() {
     const fileRef = useRef();
+    const { setAlertInfos } = useGlobal()
 
     const { setPhotoInfos, photoInfos } = useUser()
 
@@ -16,11 +18,11 @@ export default function DropPhoto() {
         if (!f) return;
 
         if (!ACCEPTED_TYPES.test(f.type)) {
-            // return setAlertModal({ open: true, tag: "error", message: "A foto de perfil deve ser PNG, JPG ou WEBP." });
+            return setAlertInfos({ open: true, type: "error", message: "A foto de perfil deve ser PNG, JPG ou WEBP." });
         }
 
         if (f.size > MAX_SIZE_MB * 1024 * 1024) {
-            // return setAlertModal({ open: true, tag: "error", message: `A foto de perfil não pode ultrapassar ${MAX_SIZE_MB} MB.` });
+            return setAlertInfos({ open: true, type: "error", message: `A foto de perfil não pode ultrapassar ${MAX_SIZE_MB} MB.` });
         }
 
         setPhotoInfos(prev => ({

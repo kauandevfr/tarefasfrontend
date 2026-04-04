@@ -1,4 +1,5 @@
 // utils/savePhoto.js
+import { useGlobal } from "../providers/globalContext";
 import { useUser } from "../providers/userContext";
 import instance from "./instance";
 
@@ -38,6 +39,7 @@ const getCroppedBlob = async (imageSrc, croppedAreaPixels) => {
 
 export function useSavePhoto() {
     const { photoInfos, listUser } = useUser();
+    const { showError } = useGlobal()
 
     return async () => {
         try {
@@ -52,7 +54,7 @@ export function useSavePhoto() {
 
             listUser()
         } catch (err) {
-            // showError(err);
+            showError(err);
         }
     };
 }

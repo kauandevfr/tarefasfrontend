@@ -22,7 +22,7 @@ export default function User() {
 
     const { listTasks, tasks } = useTask()
 
-    const { setAlertInfos } = useGlobal()
+    const { setAlertInfos, showError } = useGlobal()
 
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(updateUserSchema),
@@ -43,13 +43,13 @@ export default function User() {
         delete data.phonenumber
 
         try {
-            await instance.put('/user', data)
+            await instance.put('/user/update', data)
             listUser()
             resetPass()
 
             setAlertInfos({ open: true, message: 'Dados atualizados com sucesso!', type: 'success' })
         } catch (error) {
-            return console.error({ ...error });
+            return showError(error)
         }
     };
 
@@ -57,7 +57,7 @@ export default function User() {
         const theme = user.data.theme === "light" ? "dark" : "light"
 
         try {
-            await instance.put('/user', { theme })
+            await instance.put('/user/update', { theme })
 
             const html = document.querySelector('html');
             html.setAttribute('data-theme', theme);
