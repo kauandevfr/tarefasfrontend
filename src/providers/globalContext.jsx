@@ -34,8 +34,7 @@ export function GlobalProvider({ children }) {
 
         const data = error.response?.data;
 
-        console.error(error);
-
+        if (data.code === 'TOKEN_MISSING') return
 
         return setAlertInfos({
             open: true,
