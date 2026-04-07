@@ -1,16 +1,38 @@
 import { Link, useNavigate } from "react-router-dom"
 import Title from "../../components/Title"
 import "./styles.scss"
+import { useGlobal } from "../../providers/globalContext"
+import instance from "../../services/instance"
+import { forgotPassSchema } from "../../schemas/user/forgotpass"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import ErrorMessage from "../../components/ErrorMessage"
+import AlertModal from "../../components/AlertModal"
 
 export default function ForgotPassword() {
     const navigate = useNavigate()
+    const { showError, setAlertInfos } = useGlobal()
+
+    const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm({ resolver: yupResolver(forgotPassSchema) });
+
+
+    const sendEmail = async d => {
+        try {
+            const { data } = await instance.post('/user/forgot-password', d)
+
+            setAlertInfos({ open: true, message: data.message, type: 'success' })
+        } catch (error) {
+            console.log(error)
+            return showError(error)
+        }
+    }
 
     return (
         <main className="center">
             <div className="blur" />
             <div className="wrapper">
 
-                <form className="panel-right vertical p4 between">
+                <div className="panel-right vertical p4 between">
                     <div className="brand">
                         <Title />
                         <h2 className="subtitle">Seu gerenciador pessoal.</h2>
@@ -34,23 +56,10 @@ export default function ForgotPassword() {
                         <p className="span">Enviaremos um link seguro para você redefinir sua senha rapidinho.</p>
                     </div>
 
-                    {/* <div className="steps vertical g1">
-                        <div className="step">
-                            <h3 className="step-num">1</h3>
-                            <p className="span">Informe seu e-mail cadastrado</p>
-                        </div>
-                        <div className="step">
-                            <h3 className="step-num">2</h3>
-                            <p className="span">Verifique sua caixa de entrada</p>
-                        </div>
-                        <div className="step">
-                            <h3 className="step-num">3</h3>
-                            <p className="span">Clique no link e crie uma nova senha</p>
-                        </div>
-                    </div> */}
-
-                </form>
-                <div className="panel-left p4">
+                </div>
+                <form className="panel-left p4"
+                    onSubmit={handleSubmit(sendEmail)}
+                >
                     <div className="form-header">
                         <h1 className="title">Esqueceu<br />a senha?</h1>
                         <h2 className="subtitle">Sem problema. Digite seu e-mail e te enviamos o link de recuperação.</h2>
@@ -58,19 +67,21 @@ export default function ForgotPassword() {
                     <div className="vertical w100 g2">
                         <div className="field-group">
                             <label className="label" htmlFor="email">E-mail</label>
-                            <input className="input"
+                            <input className={`input ${errors.email && 'error'}`}
                                 type="text"
-                                riquired
                                 autoFocus
                                 id="email"
                                 placeholder="seu@email.com"
+                                {...register('email')}
                             />
+                            <ErrorMessage message={errors.email?.message} />
                         </div>
 
                     </div>
                     <div className="vertical g2">
                         <button className="button w100 jc-center"
                             type="submit"
+                            disabled={isSubmitting}
                         >
                             Enviar link de recuperação
                         </button>
@@ -80,8 +91,9 @@ export default function ForgotPassword() {
                             </button>
                         </span>
                     </div>
-                </div>
+                </form>
             </div>
+            <AlertModal />
         </main >
     )
 }

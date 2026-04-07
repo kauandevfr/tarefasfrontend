@@ -7,6 +7,7 @@ import User from "../pages/User";
 import ForgotPassword from "../pages/ForgotPassword";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
+import ResetPassword from "../pages/ResetPassword";
 
 export default function MainRoutes() {
     return (
@@ -26,6 +27,7 @@ export default function MainRoutes() {
 
             {/* 🌐 Qualquer um */}
             <Route path="/forgot-pass" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/*" element={<NotFound />} />
         </Routes>
     );
