@@ -34,8 +34,10 @@ export default function ModalConfirmAction() {
         try {
             const { data } = await instance.delete(`/${type}`, { data: d });
             setAlertInfos({ open: true, type: 'success', message: data.message })
-
-            if (type === 'user') navigate('/login')
+            if (type !== 'tasks') {
+                document.documentElement.removeAttribute('data-theme')
+                navigate('/login')
+            }
             closeModal()
         } catch (error) {
             showError(error)
