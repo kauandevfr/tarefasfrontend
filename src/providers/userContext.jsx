@@ -58,6 +58,12 @@ export const UserProvider = ({ children }) => {
         listUser()
     }, []);
 
+    const initialConfirmActionInfos = {
+        open: false,
+        type: null
+    }
+
+    const [confirmActionInfos, setConfirmActionInfos] = useState(initialConfirmActionInfos)
 
     return (
         <UserContext.Provider value={{
@@ -70,7 +76,10 @@ export const UserProvider = ({ children }) => {
             setPhotoInfos,
             initialPhotoInfos,
             isAuthenticated,
-            setIsAuthenticated
+            setIsAuthenticated,
+            confirmActionInfos,
+            setConfirmActionInfos,
+            initialConfirmActionInfos
         }}>
             {children}
         </UserContext.Provider>

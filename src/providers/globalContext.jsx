@@ -31,6 +31,7 @@ export function GlobalProvider({ children }) {
     }, []);
 
     const showError = error => {
+        console.error(error);
 
         const data = error.response?.data;
 

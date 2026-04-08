@@ -15,10 +15,11 @@ import _CountUp from "react-countup"
 const CountUp = _CountUp.default
 import { useGlobal } from "../../providers/globalContext"
 import AlertModal from "../../components/AlertModal"
+import ModalConfirmAction from "../../components/ModalConfirmAction"
 
 export default function User() {
 
-    const { listUser, user, setPhotoSteps } = useUser()
+    const { listUser, user, setPhotoSteps, setConfirmActionInfos } = useUser()
 
     const { listTasks, tasks } = useTask()
 
@@ -77,6 +78,10 @@ export default function User() {
         } catch (err) {
             showError(err);
         }
+    }
+
+    const openModalConfirmAction = type => {
+        setConfirmActionInfos({ open: true, type })
     }
 
     useEffect(() => {
@@ -241,8 +246,8 @@ export default function User() {
                 <div className="section-title">Preferências</div>
                 <div className="preference-row">
                     <div className="preference-label">
-                        <h4 className="preference-title">Tema escuro</h4>
-                        <p className='subtitle'>Interface com fundo escuro</p>
+                        <h4 className="preference-title">Tema claro</h4>
+                        <p className='subtitle'>Interface com fundo claro</p>
                     </div>
                     <Toggle
                         checked={user.data?.theme === 'light'}
@@ -270,18 +275,23 @@ export default function User() {
                         <h4 className="preference-title">Limpar todas as tarefas</h4>
                         <p className="subtitle">Remove permanentemente todas as tarefas da sua conta</p>
                     </div>
-                    <button className="button bg-red">Limpar tarefas</button>
+                    <button className="button bg-red"
+                        type="button"
+                        onClick={() => openModalConfirmAction('tasks')}>Limpar tarefas</button>
                 </div>
                 <div className="preference-row">
                     <div>
                         <h4 className="preference-title">Excluir conta</h4>
                         <p className="subtitle">Apaga sua conta e todos os dados associados</p>
                     </div>
-                    <button className="button bg-red">Excluir conta</button>
+                    <button className="button bg-red" type="button"
+                        onClick={() => openModalConfirmAction('user')}
+                    >Excluir conta</button>
                 </div>
             </section>
             <UploadAvatar />
             <AlertModal />
+            <ModalConfirmAction />
         </main>
     )
 }
