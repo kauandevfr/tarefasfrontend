@@ -40,3 +40,47 @@
     display: flex;
     justify-content: space-between;
 }
+
+.search-wrap {
+    background-color: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--b-radius);
+    padding: .8rem 1.2rem;
+    transition: border-color .15s;
+
+    svg {
+        color: var(--color-text-muted);
+        flex-shrink: 0;
+    }
+
+    &:focus-within {
+        border-color: rgb(var(--yellow-800));
+
+        svg {
+            color: rgb(var(--yellow-800));
+        }
+    }
+}
+
+.search-input {
+    all: unset;
+    font-size: 1.4rem;
+    color: var(--color-text);
+    width: 18rem;
+
+    &::placeholder {
+        color: var(--color-text-muted);
+    }
+}
+
+.search-clear {
+    all: unset;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: var(--color-text);
+    }
+}

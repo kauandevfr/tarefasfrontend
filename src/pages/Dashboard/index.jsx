@@ -26,7 +26,7 @@ export default function Dashboard() {
     const [, setSearchParams] = useSearchParams()
     const { view } = useViewStore()
 
-    const { listTasks, tasks, setShowTask, filteredTasks, filter } = useTask()
+    const { listTasks, tasks, setShowTask, filteredTasks, filter, search, setSearch } = useTask()
 
     const { hideAside, setHideAside } = useGlobal()
 
@@ -38,6 +38,7 @@ export default function Dashboard() {
             prev.set('view', view)
             return prev
         })
+        setSearch('')
         listTasks(date)
     }, [date, view])
 
@@ -69,10 +70,27 @@ export default function Dashboard() {
                                         {format(new Date(date + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                                     </p>
                                 </div>
-                                <button className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
-                                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
-                                    Nova Tarefa
-                                </button>
+                                <div className="horizontal g2 ai-center">
+                                    <div className="search-wrap horizontal ai-center g1">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+                                        <input
+                                            className="search-input"
+                                            type="text"
+                                            placeholder="Buscar tarefa..."
+                                            value={search}
+                                            onChange={e => setSearch(e.target.value)}
+                                        />
+                                        {search && (
+                                            <button className="search-clear" type="button" onClick={() => setSearch('')}>
+                                                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                                            </button>
+                                        )}
+                                    </div>
+                                    <button className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+                                        Nova Tarefa
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="date-nav surface ai-center">

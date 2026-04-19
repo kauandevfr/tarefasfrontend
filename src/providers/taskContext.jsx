@@ -54,7 +54,6 @@ export function TasksProvider({ children }) {
     const listOverdueTasks = async () => {
         try {
             const { data } = await instance.get('/tasks/overdue')
-            console.log(data)
             setOverdueTasks(data)
         } catch (error) {
             return showError(error)
@@ -62,6 +61,7 @@ export function TasksProvider({ children }) {
     }
 
     const [filter, setFilter] = useState({ status: 'all', priority: null })
+    const [search, setSearch] = useState('')
 
     const filteredTasks = tasks.items.filter(task => {
         const statusMatch =
@@ -73,7 +73,11 @@ export function TasksProvider({ children }) {
             ? task.priority === filter.priority
             : true
 
-        return statusMatch && priorityMatch
+        const searchMatch = search.trim()
+            ? task.title.toLowerCase().includes(search.trim().toLowerCase())
+            : true
+
+        return statusMatch && priorityMatch && searchMatch
     })
 
     return (
@@ -87,6 +91,7 @@ export function TasksProvider({ children }) {
                 deleteTask,
                 setDeleteTask,
                 filter, setFilter,
+                search, setSearch,
                 filteredTasks,
                 overdueTasks,
                 listOverdueTasks
