@@ -144,7 +144,7 @@ export default function Calendar() {
                             >
                                 <span className="cal-day-num">{day}</span>
 
-                                {total && completed ?
+                                {total > 0 ?
                                     <div className="vertical">
                                         <span className="cal-day-num">{total}/{completed}</span>
                                         <ProgressBar completed={completed} total={total} />
