@@ -21,6 +21,11 @@
         opacity: 0.2;
         pointer-events: none;
     }
+
+    &.drop-over {
+        border: 2px solid rgb(var(--yellow-800));
+        background-color: rgba(var(--yellow-800), .08);
+    }
 }
 
 .cal-day:hover {
@@ -53,4 +58,90 @@
     color: var(--color-text-muted);
     margin-bottom: 6px;
     font-weight: 600;
+}
+
+.cal-pills {
+    gap: .3rem !important;
+    flex: 1;
+    margin: .4rem 0;
+}
+
+.cal-pill {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .5rem;
+    border-radius: .4rem;
+    font-size: 1.1rem;
+    cursor: grab;
+    user-select: none;
+    background-color: rgba(var(--yellow-800), .08);
+    border: 1px solid transparent;
+    transition: opacity .15s, transform .15s;
+    overflow: hidden;
+
+    &.high {
+        background-color: rgba(var(--red-1200), .15);
+        border-color: rgba(var(--red-1200), .3);
+    }
+
+    &.medium {
+        background-color: rgba(var(--yellow-800), .12);
+        border-color: rgba(var(--yellow-800), .3);
+    }
+
+    &.low {
+        background-color: rgba(var(--green-1200), .12);
+        border-color: rgba(var(--green-1200), .3);
+    }
+
+    &.done {
+        opacity: .4;
+        text-decoration: line-through;
+    }
+
+    &.dragging {
+        opacity: 0;
+    }
+
+    &.overlay {
+        cursor: grabbing;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+        transform: rotate(2deg) scale(1.04);
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.cal-pill-dot {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    .high & {
+        background: rgb(var(--red-1200));
+    }
+
+    .medium & {
+        background: rgb(var(--yellow-800));
+    }
+
+    .low & {
+        background: rgb(var(--green-1200));
+    }
+}
+
+.cal-pill-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cal-overflow {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    padding: .2rem .5rem;
 }

@@ -37,6 +37,12 @@ export default function TaskRow({ task }) {
                     <div className="task-title text-xl">{task.title}</div>
                     <div className="horizontal g2">
                         <Badge priority={task.priority} />
+                        {task.repeat && (
+                            <div className="task-meta horizontal g1 ai-center" title={task.repeat === 'daily' ? 'Repete diariamente' : 'Repete semanalmente'}>
+                                <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 014-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 01-4 4H3"></path></svg>
+                                <span>{task.repeat === 'daily' ? 'Diário' : 'Semanal'}</span>
+                            </div>
+                        )}
                         {isLate && (
                             <div className="task-meta high">
                                 <span>Atrasada</span>

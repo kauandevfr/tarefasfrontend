@@ -23,4 +23,10 @@ export const taskSchema = yup.object({
         .boolean()
         .required()
         .default(false),
+
+    repeat: yup
+        .string()
+        .oneOf(['daily', 'weekly', ''])
+        .nullable()
+        .default(null),
 })

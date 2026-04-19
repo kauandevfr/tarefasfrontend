@@ -35,6 +35,7 @@ export default function ModalTask() {
             priority: '',
             createdat: '',
             completed: false,
+            repeat: null,
         })
     }
     const handleTask = async data => {
@@ -70,6 +71,7 @@ export default function ModalTask() {
                 completed: data?.completed || false,
                 priority: data?.priority || '',
                 createdat: data?.createdat.split('T')[0] || '',
+                repeat: data?.repeat || null,
             });
         } else {
             setValue('createdat', date)
@@ -134,6 +136,26 @@ export default function ModalTask() {
                     {...register('createdat')}
                 />
                 <ErrorMessage message={errors.createdat?.message} />
+            </div>
+            <div className="field-group">
+                <label className="label">Repetir</label>
+                <div className="modal-priority-section horizontal g2">
+                    {[
+                        { value: null, label: 'Nunca' },
+                        { value: 'daily', label: 'Diário' },
+                        { value: 'weekly', label: 'Semanal' },
+                    ].map(({ value, label }) => (
+                        <button
+                            key={label}
+                            className={`button w100 jc-center ${watch('repeat') === value ? '' : 'secondary'}`}
+                            type="button"
+                            style={{ opacity: watch('repeat') !== value ? 0.5 : 1 }}
+                            onClick={() => setValue('repeat', value)}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="field-group">
                 <div className="horizontal g2 jc-end">
