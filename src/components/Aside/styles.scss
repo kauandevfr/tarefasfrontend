@@ -7,8 +7,7 @@
     overflow: hidden;
     width: 26rem;
     background: var(--color-bg);
-
-
+    overflow-y: auto;
 
     .button {
         background: rgba(var(--yellow-800), .015);
@@ -26,6 +25,11 @@
         padding: .5rem;
     }
 
+    .badge--red {
+        background-color: rgb(var(--red-1200));
+        color: var(--white);
+    }
+
     &.hide {
         width: 10rem;
 
@@ -39,6 +43,21 @@
     font-size: 1.6rem;
     color: var(--color-text-muted);
     margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.overdue-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 18rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.overdue-item:hover {
+    background: rgba(var(--red-1200), .7) !important;
 }
 
 .sidebar-dot {

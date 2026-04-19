@@ -1,16 +1,27 @@
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { useEffect } from 'react'
 import { useGlobal } from '../../providers/globalContext'
 import { useTask } from '../../providers/taskContext'
+import { useDateStore } from '../../providers/useDateRestore'
 import { useSetView } from '../../providers/useViewStore'
 import './styles.scss'
 
 export default function Aside() {
 
     const setView = useSetView()
-
     const { hideAside } = useGlobal()
+    const { tasks, setFilter, overdueTasks, listOverdueTasks } = useTask()
+    const { setDate } = useDateStore()
 
-    const { tasks, setFilter } = useTask()
+    useEffect(() => {
+        listOverdueTasks()
+    }, [])
 
+    function handleOverdueClick(date) {
+        setDate(date)
+        setView('list')
+    }
 
     return (
         <aside className={`main-aside p2 vertical g1 ${hideAside && 'hide'}`}>
@@ -55,6 +66,28 @@ export default function Aside() {
                 <div className='sidebar-dot low' />
                 <span>Baixa</span>
             </button>
+
+            {overdueTasks.length > 0 && (
+                <>
+                    <span className="sidebar-label sidebar-label--overdue">
+                        Atrasadas
+                        <span className='badge badge--red'>{overdueTasks.reduce((acc, t) => acc + Number(t.count), 0)}</span>
+                    </span>
+                    <div className='overdue-list g1'>
+                        {overdueTasks.map(({ date, count }) => (
+                            <button
+                                key={date}
+                                className="button between overdue-item"
+                                type='button'
+                                onClick={() => handleOverdueClick(date)}
+                            >
+                                <span>{format(new Date(date + 'T12:00:00'), "dd 'de' MMM", { locale: ptBR })}</span>
+                                <span className='badge badge--red'>{count}</span>
+                            </button>
+                        ))}
+                    </div>
+                </>
+            )}
 
         </aside>
     )

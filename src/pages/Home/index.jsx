@@ -25,12 +25,12 @@ export default function Home() {
                     <Title />
                     <ul className="nav-links horizontal g4">
                         <li><a className="link" href="#features">Funcionalidades</a></li>
-                        <li><a className="link" href="#como-funciona">Como funciona</a></li>
+                        <li><a className="link" href="#how">Como funciona</a></li>
                         <li><a className="link" href="#whatsapp">WhatsApp</a></li>
                     </ul>
                     <div className="horizontal g2">
                         <Link className="button secondary" to='/login' >Entrar</Link>
-                        <Link className="button" to='/register'>Começar grátis</Link>
+                        <Link className="button" to='/register'>Começar agora</Link>
                     </div>
                 </nav>
 
@@ -203,7 +203,7 @@ export default function Home() {
             </section>
 
             {/* ── How it works ── */}
-            <section className="how vertical g4 content-width" id="como-funciona">
+            <section className="how vertical g4 content-width" id="how">
                 <div className="vertical g2">
                     <span className="uppercase text-sm text-yellow-800 text-w-800">Como funciona</span>
                     <h2 className="section-heading title">Três passos<br /><span className='text-yellow-800'>pra começar.</span></h2>

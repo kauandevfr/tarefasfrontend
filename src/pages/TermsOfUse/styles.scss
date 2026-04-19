@@ -1,0 +1,37 @@
+.policy-page {
+    padding: 6rem 0 10rem;
+}
+
+.policy-intro {
+    border-left: 3px solid rgb(var(--yellow-800));
+    border-radius: 0 var(--b-radius) var(--b-radius) 0;
+    padding: 2rem 2.4rem;
+
+}
+
+.policy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding-left: 1.6rem;
+
+    li {
+        position: relative;
+        line-height: 1.7;
+
+        &::before {
+            content: '—';
+            position: absolute;
+            left: -1.6rem;
+            color: rgb(var(--yellow-800));
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.policy-footer {
+    padding-top: 3.2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
