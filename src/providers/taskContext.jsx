@@ -19,6 +19,17 @@ export function TasksProvider({ children }) {
         completed: null
     }
 
+    const [overdueTasks, setOverdueTasks] = useState([])
+
+    const listOverdueTasks = async () => {
+        try {
+            const { data } = await instance.get('/tasks/overdue')
+            setOverdueTasks(data)
+        } catch (error) {
+            return showError(error)
+        }
+    }
+
     const [tasks, setTasks] = useState(initialTasks);
 
     const listTasks = async date => {
@@ -31,6 +42,8 @@ export function TasksProvider({ children }) {
                 total: data.length,
                 completed: data.filter(t => t.completed).length
             });
+
+            listOverdueTasks()
         } catch (error) {
             return showError(error)
         }
@@ -49,16 +62,7 @@ export function TasksProvider({ children }) {
         id: null
     })
 
-    const [overdueTasks, setOverdueTasks] = useState([])
 
-    const listOverdueTasks = async () => {
-        try {
-            const { data } = await instance.get('/tasks/overdue')
-            setOverdueTasks(data)
-        } catch (error) {
-            return showError(error)
-        }
-    }
 
     const [filter, setFilter] = useState({ status: 'all', priority: null })
     const [search, setSearch] = useState('')
