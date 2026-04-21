@@ -20,11 +20,40 @@ export function TasksProvider({ children }) {
     }
 
     const [overdueTasks, setOverdueTasks] = useState([])
+    const [overdueDetails, setOverdueDetails] = useState([])
+    const [overdueModalOpen, setOverdueModalOpen] = useState(false)
 
     const listOverdueTasks = async () => {
         try {
             const { data } = await instance.get('/tasks/overdue')
             setOverdueTasks(data)
+        } catch (error) {
+            return showError(error)
+        }
+    }
+
+    const listOverdueDetails = async () => {
+        try {
+            const { data } = await instance.get('/tasks/overdue/details')
+            setOverdueDetails(data)
+        } catch (error) {
+            return showError(error)
+        }
+    }
+
+    const completeOverdueTask = async (taskId) => {
+        try {
+            await instance.put(`/task/${taskId}`, { completed: true })
+            setOverdueDetails(prev =>
+                prev.map(group => ({
+                    ...group,
+                    tasks: group.tasks.filter(t => t.id !== taskId)
+                })).filter(group => group.tasks.length > 0)
+            )
+            setOverdueTasks(prev =>
+                prev.map(g => ({ ...g, count: String(Number(g.count) - 1) }))
+                    .filter(g => Number(g.count) > 0)
+            )
         } catch (error) {
             return showError(error)
         }
@@ -98,7 +127,12 @@ export function TasksProvider({ children }) {
                 search, setSearch,
                 filteredTasks,
                 overdueTasks,
-                listOverdueTasks
+                listOverdueTasks,
+                overdueDetails,
+                listOverdueDetails,
+                overdueModalOpen,
+                setOverdueModalOpen,
+                completeOverdueTask
             }}
         >
             {children}

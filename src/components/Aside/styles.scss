@@ -77,3 +77,27 @@
         background: rgba(var(--green-1200));
     }
 }
+
+.overdue-section {
+    margin-top: 2rem;
+    gap: .4rem;
+}
+
+.overdue-section-trigger {
+    all: unset;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover .sidebar-label--overdue {
+        opacity: .8;
+    }
+}
+
+.sidebar-label--overdue {
+    color: rgb(var(--red-1000));
+    font-size: 1.6rem;
+    font-weight: 500;
+}

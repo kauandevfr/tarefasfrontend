@@ -80,6 +80,16 @@ export default function User() {
         }
     }
 
+    const changeHighlightOverdue = async () => {
+        const highlightOverdue = !user.data.highlight_overdue
+        try {
+            await instance.put('/user/update', { highlightOverdue })
+            listUser()
+        } catch (error) {
+            showError(error)
+        }
+    }
+
     const openModalConfirmAction = type => {
         setConfirmActionInfos({ open: true, type })
     }
@@ -265,7 +275,10 @@ export default function User() {
                         <h4 className="preference-title">Tarefas atrasadas em destaque</h4>
                         <p className='subtitle'>Exibir alerta visual nas tarefas vencidas</p>
                     </div>
-                    <Toggle />
+                    <Toggle
+                        checked={!!user.data?.highlight_overdue}
+                        onChange={changeHighlightOverdue}
+                    />
                 </div>
             </section>
             <section className="surface danger fade-anim vertical">

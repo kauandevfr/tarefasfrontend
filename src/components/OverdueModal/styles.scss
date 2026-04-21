@@ -1,0 +1,58 @@
+.overdue-modal-title {
+    font-size: 2.2rem;
+    font-style: italic;
+    color: rgb(var(--red-1000));
+}
+
+.overdue-modal-body {
+    gap: 2.4rem;
+    width: 100%;
+}
+
+.overdue-modal-empty {
+    min-height: 10rem;
+}
+
+.overdue-group {
+    gap: .8rem;
+}
+
+.overdue-group-label {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: .4rem;
+    transition: color .15s;
+
+    &:hover {
+        color: var(--color-text);
+    }
+
+    svg {
+        color: rgb(var(--red-1000));
+    }
+
+    .badge--red {
+        background-color: rgb(var(--red-1200));
+        color: var(--white);
+        border-radius: var(--b-radius);
+        padding: .3rem .6rem;
+        font-size: 1.1rem;
+    }
+}
+
+.overdue-task-row {
+    background: var(--color-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--b-radius);
+    padding: 1.2rem 1.6rem;
+    overflow: hidden;
+    margin-bottom: .4rem;
+}

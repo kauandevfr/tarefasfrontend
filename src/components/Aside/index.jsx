@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useGlobal } from '../../providers/globalContext'
 import { useTask } from '../../providers/taskContext'
 import { useDateStore } from '../../providers/useDateRestore'
@@ -11,7 +12,7 @@ export default function Aside() {
 
     const setView = useSetView()
     const { hideAside } = useGlobal()
-    const { tasks, setFilter, overdueTasks, listOverdueTasks } = useTask()
+    const { tasks, setFilter, overdueTasks, listOverdueTasks, setOverdueModalOpen } = useTask()
     const { setDate } = useDateStore()
 
     useEffect(() => {
@@ -68,11 +69,19 @@ export default function Aside() {
             </button>
 
             {overdueTasks.length > 0 && (
-                <>
-                    <span className="sidebar-label sidebar-label--overdue">
-                        Atrasadas
-                        <span className='badge badge--red'>{overdueTasks.reduce((acc, t) => acc + Number(t.count), 0)}</span>
-                    </span>
+                <motion.div layoutId='overdue-section' className='overdue-section vertical'>
+                    <button
+                        className='overdue-section-trigger horizontal between ai-center w100'
+                        type='button'
+                        onClick={() => setOverdueModalOpen(true)}
+                    >
+                        <span className="sidebar-label sidebar-label--overdue" style={{ marginTop: 0 }}>
+                            Atrasadas
+                        </span>
+                        <span className='badge badge--red'>
+                            {overdueTasks.reduce((acc, t) => acc + Number(t.count), 0)}
+                        </span>
+                    </button>
                     <div className='overdue-list g1'>
                         {overdueTasks.map(({ date, count }) => (
                             <button
@@ -86,9 +95,10 @@ export default function Aside() {
                             </button>
                         ))}
                     </div>
-                </>
+                </motion.div>
             )}
 
         </aside>
     )
 }
+

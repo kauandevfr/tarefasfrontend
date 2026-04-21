@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./styles.scss"
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function ModalBase({ children, onClose, onSubmit, title, isOpen }) {
+export default function ModalBase({ children, onClose, onSubmit, title, isOpen, layoutId }) {
 
     useEffect(() => {
         document.documentElement.style.overflow = isOpen ? 'hidden' : '';
@@ -34,14 +34,17 @@ export default function ModalBase({ children, onClose, onSubmit, title, isOpen }
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35, ease: 'easeInOut' }}
                     onMouseDown={(e) => {
                         if (e.target === e.currentTarget) {
                             onClose();
                         }
                     }}
-
                 >
-                    <form className="article modal-content"
+                    <motion.form
+                        className="article modal-content"
+                        layoutId={layoutId}
+                        transition={{ duration: 0.35, ease: 'easeInOut' }}
                         onSubmit={onSubmit}
                     >
                         <header className="modal-header horizontal between ai-center p2">
@@ -67,7 +70,7 @@ export default function ModalBase({ children, onClose, onSubmit, title, isOpen }
                         <div className="vertical w100 g2 p2">
                             {children}
                         </div>
-                    </form>
+                    </motion.form>
                 </motion.div>
             )}
         </AnimatePresence>

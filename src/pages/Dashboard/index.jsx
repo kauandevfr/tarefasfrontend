@@ -18,6 +18,8 @@ import { useViewStore } from "../../providers/useViewStore"
 import "./styles.scss"
 import Badge from '../../components/Badge'
 import AlertModal from '../../components/AlertModal'
+import OverdueBanner from '../../components/OverdueBanner'
+import OverdueModal from '../../components/OverdueModal'
 
 
 
@@ -63,6 +65,7 @@ export default function Dashboard() {
                     <ButtonViewSidebar />
                     {view === 'list' ?
                         <>
+                            <OverdueBanner />
                             <div className="listing-header horizontal content-width between ai-center">
                                 <div className="vertical g1">
                                     <h1 className="title text-nowrap">Minhas Tarefas</h1>
@@ -142,6 +145,7 @@ export default function Dashboard() {
                     <ModalTask />
                     <ModalDelete />
                     <AlertModal />
+                    <OverdueModal />
                 </section>
 
             </div>
