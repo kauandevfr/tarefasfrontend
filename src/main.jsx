@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { GlobalProvider } from './providers/globalContext'
 import { TasksProvider } from './providers/taskContext.jsx'
 import { UserProvider } from './providers/userContext.jsx'
+import { TutorialProvider } from './providers/tutorialContext.jsx'
 import './styles/global.scss'
 import "./styles/responsiveness.scss"
 import Footer from './components/Footer/index.jsx'
@@ -17,9 +18,11 @@ createRoot(document.getElementById('root')).render(
       <GlobalProvider>
         <UserProvider>
           <TasksProvider>
-            <ScrollToTop />
-            <MainRoutes />
-            <Footer />
+            <TutorialProvider>
+              <ScrollToTop />
+              <MainRoutes />
+              <Footer />
+            </TutorialProvider>
           </TasksProvider>
         </UserProvider>
       </GlobalProvider>

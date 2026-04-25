@@ -21,8 +21,6 @@ import AlertModal from '../../components/AlertModal'
 import OverdueBanner from '../../components/OverdueBanner'
 import OverdueModal from '../../components/OverdueModal'
 
-
-
 export default function Dashboard() {
     const { date, prevDay, nextDay } = useDateStore()
     const [, setSearchParams] = useSearchParams()
@@ -43,7 +41,6 @@ export default function Dashboard() {
         setSearch('')
         listTasks(date)
     }, [date, view])
-
 
     function ButtonViewSidebar() {
         return (
@@ -89,7 +86,7 @@ export default function Dashboard() {
                                             </button>
                                         )}
                                     </div>
-                                    <button className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
+                                    <button data-tutorial="new-task" className="button" type="button" onClick={() => setShowTask({ open: true, data: {}, type: 'add' })}>
                                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
                                         Nova Tarefa
                                     </button>
@@ -116,13 +113,11 @@ export default function Dashboard() {
                                 </div>
                             )}
 
-                            <div className="surface horizontal g2">
-
+                            <div data-tutorial="progress" className="surface horizontal g2">
                                 <div className="vertical g1 jc-center w100">
                                     <div className="subtitle">Progresso do dia</div>
                                     <ProgressBar completed={tasks.completed} total={tasks.total} />
                                 </div>
-
                                 <div className="vertical ai-center">
                                     <strong className="text-yellow-800 font-title text-4xl">{tasks.total}/{tasks.completed}</strong>
                                     <span className="subtitle">concluídas</span>
@@ -136,6 +131,7 @@ export default function Dashboard() {
                                         filteredTasks.map((task, index) => <TaskRow
                                             key={task.id}
                                             task={task}
+                                            data-tutorial={index === 0 ? 'task-row' : undefined}
                                             style={{ animationDelay: `${index * 1}s` }} />) :
                                         <WithoutList />
                                 }

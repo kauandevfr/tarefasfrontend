@@ -6,7 +6,7 @@ import Badge from "../Badge"
 import Checkbox from "../Checkbox"
 import "./styles.scss"
 
-export default function TaskRow({ task }) {
+export default function TaskRow({ task, 'data-tutorial': dataTutorial }) {
 
     const isLate = !task.completed && task.createdat < new Date().toISOString().split('T')[0]
 
@@ -26,7 +26,7 @@ export default function TaskRow({ task }) {
     };
 
     return (
-        <div className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center opacity-anim`}>
+        <div data-tutorial={dataTutorial} className={`task-row ${task.completed && 'completed'} surface horizontal between ai-center opacity-anim`}>
 
             <div className="horizontal g2">
                 <Checkbox

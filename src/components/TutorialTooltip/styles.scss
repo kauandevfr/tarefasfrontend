@@ -1,0 +1,78 @@
+.tutorial-tooltip {
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--b-radius);
+    padding: 2rem;
+    width: 32rem;
+    gap: 1.2rem;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgb(var(--yellow-800)), transparent);
+        border-radius: var(--b-radius) var(--b-radius) 0 0;
+    }
+}
+
+.tutorial-header {
+    margin-bottom: .4rem;
+}
+
+.tutorial-step {
+    font-size: 1.2rem;
+    color: rgb(var(--yellow-800));
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.tutorial-skip {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+
+    &:hover {
+        color: var(--color-text);
+    }
+}
+
+.tutorial-title {
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.tutorial-content {
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.tutorial-footer {
+    margin-top: .8rem;
+}
+
+.tutorial-dots {
+    align-items: center;
+}
+
+.tutorial-dot {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background: var(--border-color);
+    transition: all .2s;
+
+    &.active {
+        background: rgb(var(--yellow-800));
+        width: 1.6rem;
+        border-radius: .3rem;
+    }
+}

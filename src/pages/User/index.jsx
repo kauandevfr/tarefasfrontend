@@ -252,8 +252,7 @@ export default function User() {
                     </button>
                 </div>
             </form>
-            <section className="surface fade-anim vertical">
-                <div className="section-title">Preferências</div>
+            <section data-tutorial="preferences" className="surface fade-anim vertical">
                 <div className="preference-row">
                     <div className="preference-label">
                         <h4 className="preference-title">Tema claro</h4>

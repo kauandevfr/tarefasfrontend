@@ -9,7 +9,7 @@
 
 .footer-inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 4rem;
     align-items: flex-start;
 }
@@ -21,6 +21,12 @@
 
 .footer-col {
     gap: .8rem !important;
+    overflow: hidden;
+
+    a {
+        overflow-wrap: break-word;
+        word-break: break-all;
+    }
 }
 
 .footer-label {
