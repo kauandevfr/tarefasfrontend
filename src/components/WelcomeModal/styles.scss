@@ -1,0 +1,33 @@
+.welcome-modal {
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--b-radius);
+    padding: 3.2rem;
+    width: 44rem;
+    gap: 2.4rem;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    align-items: flex-start;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgb(var(--yellow-800)), transparent);
+        border-radius: var(--b-radius) var(--b-radius) 0 0;
+    }
+}
+
+.welcome-icon {
+    font-size: 2.4rem;
+    color: rgb(var(--yellow-800));
+}
+
+.welcome-title {
+    font-size: 2.8rem;
+    font-style: italic;
+    line-height: 1.2;
+}

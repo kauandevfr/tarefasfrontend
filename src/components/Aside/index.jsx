@@ -91,7 +91,7 @@ export default function Aside() {
                                 onClick={() => handleOverdueClick(date)}
                             >
                                 <span>{format(new Date(date + 'T12:00:00'), "dd 'de' MMM", { locale: ptBR })}</span>
-                                <span className='badge badge--red'>{count}</span>
+                                <div className='badge badge--red'>{count}</div>
                             </button>
                         ))}
                     </div>

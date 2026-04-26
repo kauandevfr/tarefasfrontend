@@ -3,7 +3,8 @@
     border: 1px solid var(--border-color);
     border-radius: var(--b-radius);
     padding: 2rem;
-    width: 32rem;
+    width: 50rem;
+    max-width: 1000px;
     gap: 1.2rem;
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -56,6 +57,7 @@
 }
 
 .tutorial-footer {
+    flex-wrap: wrap;
     margin-top: .8rem;
 }
 

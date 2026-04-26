@@ -85,91 +85,94 @@ export default function ModalTask() {
             onClose={closeModal}
             onSubmit={handleSubmit(handleTask)}
         >
-            <div className="field-group">
-                <label className="label" htmlFor="title" >Título</label>
-                <input className={`input ${errors.title && 'error'}`}
-                    type="text"
-                    autoFocus
-                    id='title'
-                    placeholder='Estudar para prova'
-                    {...register('title')}
-                />
-                <ErrorMessage message={errors.title?.message} />
-            </div>
-            <div className="field-group">
-                <label className="label" htmlFor="description" >Descrição</label>
-                <textarea className={`input textarea ${errors.description && 'error'}`}
-                    id="description"
-                    cols={2}
-                    rows={6}
-                    {...register('description')}
-                />
-                <ErrorMessage message={errors.description?.message} />
-            </div>
+            <div className="modal-task vertical g2">
 
-            <div className="field-group">
-                <label className="label">Prioridade</label>
-                <div className="modal-priority-section horizontal g2">
-                    {[
-                        { value: 'high', label: 'Alta' },
-                        { value: 'medium', label: 'Média' },
-                        { value: 'low', label: 'Baixa' },
-                    ].map(({ value, label }) => (
-                        <button
-                            key={value}
-                            className={`task-meta ${value}`}
-                            type="button"
-                            style={{ opacity: watch('priority') && watch('priority') !== value ? 0.5 : 1 }}
-                            onClick={() => setValue('priority', value)}
-                        >
-                            {label}
-                        </button>
-                    ))}
-                </div>
-                <ErrorMessage message={errors.priority?.message} />
-            </div>
-            <div className="field-group">
-                <label className="label" htmlFor="createdat" >Data</label>
-                <input className={`input textarea ${errors.createdat && 'error'}`}
-                    type="date"
-                    id='createdat'
-                    {...register('createdat')}
-                />
-                <ErrorMessage message={errors.createdat?.message} />
-            </div>
-            <div className="field-group">
-                <label className="label">Repetir</label>
-                <div className="modal-priority-section horizontal g2">
-                    {[
-                        { value: null, label: 'Nunca' },
-                        { value: 'daily', label: 'Diário' },
-                        { value: 'weekly', label: 'Semanal' },
-                    ].map(({ value, label }) => (
-                        <button
-                            key={label}
-                            className={`button w100 jc-center ${watch('repeat') === value ? '' : 'secondary'}`}
-                            type="button"
-                            style={{ opacity: watch('repeat') !== value ? 0.5 : 1 }}
-                            onClick={() => setValue('repeat', value)}
-                        >
-                            {label}
-                        </button>
-                    ))}
-                </div>
-            </div>
-            <div className="field-group">
-                <div className="horizontal g2 jc-end">
-                    <label className="label" htmlFor="completed">Completa</label>
-                    <Checkbox
-                        onChange={() => setValue('completed', !watch('completed'))}
-                        checked={watch('completed')}
+                <div className="field-group">
+                    <label className="label" htmlFor="title" >Título</label>
+                    <input className={`input ${errors.title && 'error'}`}
+                        type="text"
+                        autoFocus
+                        id='title'
+                        placeholder='Estudar para prova'
+                        {...register('title')}
                     />
+                    <ErrorMessage message={errors.title?.message} />
                 </div>
-                <ErrorMessage message={errors.completed?.message} />
-            </div>
-            <div className="horizontal g2 w100 jc-center">
-                <button className='button secondary w100 jc-center' type="button" onClick={closeModal}>Cancelar</button>
-                <button className='button w100 jc-center' type="submit" disabled={isSubmitting}>Enviar</button>
+                <div className="field-group">
+                    <label className="label" htmlFor="description" >Descrição</label>
+                    <textarea className={`input textarea ${errors.description && 'error'}`}
+                        id="description"
+                        cols={2}
+                        rows={6}
+                        {...register('description')}
+                    />
+                    <ErrorMessage message={errors.description?.message} />
+                </div>
+
+                <div className="field-group">
+                    <label className="label">Prioridade</label>
+                    <div className="modal-priority-section horizontal g2">
+                        {[
+                            { value: 'high', label: 'Alta' },
+                            { value: 'medium', label: 'Média' },
+                            { value: 'low', label: 'Baixa' },
+                        ].map(({ value, label }) => (
+                            <button
+                                key={value}
+                                className={`task-meta ${value}`}
+                                type="button"
+                                style={{ opacity: watch('priority') && watch('priority') !== value ? 0.5 : 1 }}
+                                onClick={() => setValue('priority', value)}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                    <ErrorMessage message={errors.priority?.message} />
+                </div>
+                <div className="field-group">
+                    <label className="label" htmlFor="createdat" >Data</label>
+                    <input className={`input textarea ${errors.createdat && 'error'}`}
+                        type="date"
+                        id='createdat'
+                        {...register('createdat')}
+                    />
+                    <ErrorMessage message={errors.createdat?.message} />
+                </div>
+                <div className="field-group">
+                    <label className="label">Repetir</label>
+                    <div className="modal-priority-section horizontal g2">
+                        {[
+                            { value: null, label: 'Nunca' },
+                            { value: 'daily', label: 'Diário' },
+                            { value: 'weekly', label: 'Semanal' },
+                        ].map(({ value, label }) => (
+                            <button
+                                key={label}
+                                className={`button w100 jc-center ${watch('repeat') === value ? '' : 'secondary'}`}
+                                type="button"
+                                style={{ opacity: watch('repeat') !== value ? 0.5 : 1 }}
+                                onClick={() => setValue('repeat', value)}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+                <div className="field-group">
+                    <div className="horizontal g2 jc-end">
+                        <label className="label" htmlFor="completed">Completa</label>
+                        <Checkbox
+                            onChange={() => setValue('completed', !watch('completed'))}
+                            checked={watch('completed')}
+                        />
+                    </div>
+                    <ErrorMessage message={errors.completed?.message} />
+                </div>
+                <div className="horizontal g2 w100 jc-center">
+                    <button className='button secondary w100 jc-center' type="button" onClick={closeModal}>Cancelar</button>
+                    <button className='button w100 jc-center' type="submit" disabled={isSubmitting}>Enviar</button>
+                </div>
             </div>
         </ModalBase>
     )

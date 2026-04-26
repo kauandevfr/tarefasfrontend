@@ -1,23 +1,16 @@
+import { useTutorial } from '../../providers/tutorialContext'
 import './styles.scss'
 
-export default function TutorialTooltip({
-    continuous,
-    index,
-    step,
-    backProps,
-    closeProps,
-    primaryProps,
-    skipProps,
-    tooltipProps,
-    size,
-}) {
+export default function TutorialTooltip({ index, step, tooltipProps }) {
+    const { next, prev, skip, total } = useTutorial()
+
     return (
         <div className='tutorial-tooltip vertical' {...tooltipProps}>
             <div className='tutorial-header horizontal between ai-center'>
                 <span className='tutorial-step'>
-                    {index + 1} / {size}
+                    {index + 1} / {total}
                 </span>
-                <button className='tutorial-skip' {...skipProps}>
+                <button className='tutorial-skip' type='button' onClick={skip}>
                     Pular tutorial
                 </button>
             </div>
@@ -30,7 +23,7 @@ export default function TutorialTooltip({
 
             <div className='tutorial-footer horizontal between ai-center'>
                 <div className='tutorial-dots horizontal g1'>
-                    {Array.from({ length: size }).map((_, i) => (
+                    {Array.from({ length: total }).map((_, i) => (
                         <span
                             key={i}
                             className={`tutorial-dot ${i === index ? 'active' : ''}`}
@@ -40,19 +33,13 @@ export default function TutorialTooltip({
 
                 <div className='horizontal g1'>
                     {index > 0 && (
-                        <button className='button secondary' {...backProps}>
+                        <button className='button secondary' type='button' onClick={prev}>
                             Anterior
                         </button>
                     )}
-                    {continuous ? (
-                        <button className='button' {...primaryProps}>
-                            {index === size - 1 ? 'Concluir' : 'Próximo'}
-                        </button>
-                    ) : (
-                        <button className='button' {...closeProps}>
-                            Fechar
-                        </button>
-                    )}
+                    <button className='button' type='button' onClick={next}>
+                        {index === total - 1 ? 'Concluir' : 'Próximo'}
+                    </button>
                 </div>
             </div>
         </div>
