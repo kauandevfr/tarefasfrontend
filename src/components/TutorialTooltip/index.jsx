@@ -7,9 +7,7 @@ export default function TutorialTooltip({ index, step, tooltipProps }) {
     return (
         <div className='tutorial-tooltip vertical' {...tooltipProps}>
             <div className='tutorial-header horizontal between ai-center'>
-                <span className='tutorial-step'>
-                    {index + 1} / {total}
-                </span>
+                <span className='tutorial-step'>{index + 1} / {total}</span>
                 <button className='tutorial-skip' type='button' onClick={skip}>
                     Pular tutorial
                 </button>
@@ -24,13 +22,9 @@ export default function TutorialTooltip({ index, step, tooltipProps }) {
             <div className='tutorial-footer horizontal between ai-center'>
                 <div className='tutorial-dots horizontal g1'>
                     {Array.from({ length: total }).map((_, i) => (
-                        <span
-                            key={i}
-                            className={`tutorial-dot ${i === index ? 'active' : ''}`}
-                        />
+                        <span key={i} className={`tutorial-dot ${i === index ? 'active' : ''}`} />
                     ))}
                 </div>
-
                 <div className='horizontal g1'>
                     {index > 0 && (
                         <button className='button secondary' type='button' onClick={prev}>

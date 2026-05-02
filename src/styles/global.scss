@@ -56,3 +56,8 @@ body::before {
     pointer-events: none;
     z-index: 0;
 }
+
+[class*="beacon"] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}

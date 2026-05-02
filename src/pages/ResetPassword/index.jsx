@@ -26,9 +26,7 @@ export default function ResetPassword() {
             setAlertInfos({ open: true, message: data.message, type: 'success' })
 
             navigate('/login')
-            return console.log(data)
         } catch (error) {
-            console.log(error)
             return showError(error)
         }
     }
