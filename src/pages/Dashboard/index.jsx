@@ -63,14 +63,14 @@ export default function Dashboard() {
                     {view === 'list' ?
                         <>
                             <OverdueBanner />
-                            <div className="listing-header horizontal content-width between ai-center">
+                            <div className="listing-header horizontal content-width between ai-center g2">
                                 <div className="vertical g1">
                                     <h1 className="title text-nowrap">Minhas Tarefas</h1>
                                     <p className="subtitle opacity-anim" key={date}>
                                         {format(new Date(date + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                                     </p>
                                 </div>
-                                <div className="horizontal g2 ai-center">
+                                <div className="header-actions horizontal g2 ai-center">
                                     <div className="search-wrap horizontal ai-center g1">
                                         <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
                                         <input

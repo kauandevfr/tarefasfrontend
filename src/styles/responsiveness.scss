@@ -34,6 +34,11 @@
         --content-width: 92vw;
     }
 
+    .header-actions {
+        align-items: end;
+        flex-direction: column;
+    }
+
     .without-list {
         .subtitle {
             font-size: 1.5rem;
