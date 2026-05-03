@@ -49,7 +49,6 @@ export const UserProvider = ({ children }) => {
             html.setAttribute("data-theme", data.theme);
 
         } catch (error) {
-            setIsAuthenticated(false) // 👈 adiciona
             return showError(error)
         }
     }

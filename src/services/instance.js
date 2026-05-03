@@ -34,7 +34,11 @@ instance.interceptors.response.use(
             return Promise.reject(error);
         }
 
-        if (error.response?.data?.code === "TOKEN_EXPIRED" && !originalRequest._retry) {
+        const code = error.response?.data?.code
+        const status = error.response?.status
+        const shouldRefresh = (code === 'TOKEN_EXPIRED' || code === 'TOKEN_MISSING' || status === 401) && !originalRequest._retry
+
+        if (shouldRefresh) {
             if (isRefreshing) {
                 return new Promise((resolve, reject) => {
                     failedQueue.push({ resolve, reject });
@@ -49,9 +53,11 @@ instance.interceptors.response.use(
                 processQueue(null);
                 return instance(originalRequest);
             } catch (refreshError) {
-                processQueue(refreshError);
-                window.location.href = "/login";
-                return Promise.reject(refreshError);
+                processQueue(refreshError)
+                if (!window.location.pathname.includes('/login') && !window.location.pathname.includes('/register')) {
+                    window.location.href = '/login'
+                }
+                return Promise.reject(refreshError)
             } finally {
                 isRefreshing = false;
             }

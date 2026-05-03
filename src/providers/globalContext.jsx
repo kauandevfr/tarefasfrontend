@@ -31,19 +31,19 @@ export function GlobalProvider({ children }) {
     }, []);
 
     const showError = error => {
-        console.error(error);
+        console.error(error)
 
-        const data = error.response?.data;
+        const data = error?.response?.data
+        if (!data) return
 
-        if (data.code === 'TOKEN_MISSING') return
+        if (data.code === 'TOKEN_MISSING' || data.code === 'TOKEN_EXPIRED') return
 
         return setAlertInfos({
             open: true,
             message: data.message,
-            type: "error"
-        });
-
-    };
+            type: 'error'
+        })
+    }
 
 
     return (
